@@ -1,0 +1,10 @@
+INSERT INTO myTable (id,name) VALUES (1,"Lars Byrd"),(2,"Murphy Gates"),(3,"Callum Morton"),(4,"Jeremy Bullock"),(5,"Palmer Hansen"),(6,"Jerome Soto"),(7,"Fay Gibbs"),(8,"Acton Moran"),(9,"Cailin Obrien"),
+(10,"Ferris Cox"),(11,"Lev Avery"),(12,"Valentine Padilla"),(13,"Armand Lindsay"),(14,"Jamal Pruitt"),(15,"Joseph Joyce"),(16,"Althea Hahn"),(17,"Garrett Hale"),(18,"Leah Williams"),(19,"Kaseem Rodriquez"),
+(20,"Brandon Dyer"),(21,"Sierra Hicks"),(22,"Fatima Gentry"),(23,"Elijah Mccall"),(24,"Kyra Ellison"),(25,"Andrew Lang"),(26,"Clinton Delaney"),(27,"Drake Franks"),(28,"Tamara Carver"),(29,"Casey Mcknight"),
+(30,"Denton Waters"),(31,"Gannon Norton"),(32,"Colton Head"),(33,"Kirestin Morin"),(34,"Dora Mcdonald"),(35,"Evangeline Mills"),(36,"Bert Knapp"),(37,"Basia Alford"),(38,"Chancellor Maynard"),(39,"Armand Santana"),
+(40,"Vance Vasquez"),(41,"Kenneth Camacho"),(42,"Moses Knowles"),(43,"Nolan Dean"),(44,"Alexandra Valentine"),(45,"Basia Maddox"),(46,"Nomlanga Ellison"),(47,"Marsden Orr"),(48,"Orlando Hines"),(49,"Lev Frank"),
+(50,"Christopher Deleon"),(51,"Mia Gray"),(52,"Kevin Gilliam"),(53,"Jenette Potts"),(54,"Tarik Sheppard"),(55,"Octavius Clay"),(56,"Odessa Dawson"),(57,"Serina Hurley"),(58,"Barbara Juarez"),(59,"Pearl Hopper"),
+(60,"Zia Wade"),(61,"Basil Powers"),(62,"Uriah Blevins"),(63,"Rigel Pearson"),(64,"Leilani Bryan"),(65,"Hiram Larson"),(66,"Emma Buck"),(67,"Chase Lopez"),(68,"Taylor Edwards"),(69,"Claudia Bond"),
+(70,"Herrod Briggs"),(71,"Tamara Branch"),(72,"Shoshana Burnett"),(73,"Carol Roberson"),(74,"Tanisha Reyes"),(75,"Tucker Pruitt"),(76,"Reuben Reyes"),(77,"Cora Spencer"),(78,"Chastity Williams"),(79,"Jermaine Burch"),
+(80,"Holmes Walton"),(81,"Quyn Cherry"),(82,"Castor Cain"),(83,"Tanner Ayers"),(84,"Mohammad Small"),(85,"Christian Foster"),(86,"Kennedy Francis"),(87,"Kareem Goodman"),(88,"Jackson Mcguire"),(89,"Tad Morales"),
+(90,"Abra Ewing"),(91,"Kelly Wells"),(92,"Velma Rush"),(93,"Chelsea Castaneda"),(94,"Pandora Malone"),(95,"Orlando Holcomb"),(96,"Moses Kidd"),(97,"Damian Cooley"),(98,"Matthew Heath"),(99,"Nicholas Bradley"),(100,"Mary Elliott");
