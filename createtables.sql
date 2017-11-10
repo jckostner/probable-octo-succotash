@@ -71,5 +71,6 @@ CREATE TABLE soundtracks(
      FOREIGN KEY(movieID)     int REFERENCES movies.movieID,
      title                    varchar(50) NOT NULL,
      releaseDate              datetime NOT NULL,
+     numTracks                int 
      PRIMARY KEY(movieID)
 )
