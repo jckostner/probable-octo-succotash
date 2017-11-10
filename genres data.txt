@@ -1,0 +1,17 @@
+INSERT INTO genres(genreID, genre) VALUES 
+(1,"documentary"),
+(2,"Action"),
+(3,"Romance"),
+(4,"Adventure"),
+(5,"War"),
+(6,"horror"),
+(7,"Science Fiction"),
+(8,"Western"),
+(9,"Thriller"),
+(10,"Comedy");
+(11, "Animation");
+(12, "Sports");
+(13, "Musical");
+(14, "Mystery");
+(15, "Indie");
+(16, "Drama");
