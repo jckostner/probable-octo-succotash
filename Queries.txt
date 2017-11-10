@@ -1,0 +1,19 @@
+Report
+- List all movies with a 5 start rating in alphabetical order
+- List all movies by year
+- List all movies by genre 
+- List all movies reviewed by "" user
+- List all companies that produced a movie with a 5 star rating ordered by number of movies
+
+
+Question
+-What movies are actor/actress " " in?
+-What movies were released between "" and ""?
+-What are all the ratings for movies with actor/actress ""?
+-What movies contain " " in the title?
+-What movies are directed by ""?
+-What is the soundtrack title for "" movie?
+-What movies are less than 130 minutes?
+-What movies were produced in "" country?
+-What movies have "" actor/actress and "" director?
+-
