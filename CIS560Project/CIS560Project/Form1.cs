@@ -16,5 +16,15 @@ namespace CIS560Project
         {
             InitializeComponent();
         }
+
+        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

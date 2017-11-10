@@ -1,0 +1,10 @@
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.exe.config
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.exe
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.pdb
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csprojResolveAssemblyReference.cache
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.Form1.resources
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.Properties.Resources.resources
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csproj.GenerateResource.Cache
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csproj.CoreCompileInputs.cache
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.exe
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.pdb
