@@ -8,3 +8,12 @@ C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\De
 C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csproj.CoreCompileInputs.cache
 C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.exe
 C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.pdb
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.exe.config
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.exe
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.pdb
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csprojResolveAssemblyReference.cache
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.Form1.resources
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.Properties.Resources.resources
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csproj.GenerateResource.Cache
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.exe
+C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.pdb
