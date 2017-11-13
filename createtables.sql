@@ -1,76 +1,98 @@
-CREATE TABLE movies(
-     movieID                  int NOT NULL,
-     releaseDate              datetime NOT NULL,
-     name                     varchar(50) NOT NULL,
-     length                   int NOT NULL,
-     FOREIGN KEY(genre)       int REFERENCES genre.genreID,
-     FOREIGN KEY(cID)         int REFERENCES companies.cID,
-     FOREIGN KEY(producedIn)  int REFERENCES countries.countryID,
-     PRIMARY KEY(movieID)
-)
+/*DROP TABLE IF EXISTS actorMovies;
+DROP TABLE IF EXISTS directorIDs;
+DROP TABLE IF EXISTS directorMovies;
+DROP TABLE IF EXISTS reveiwers;
+DROP TABLE IF EXISTS reviews;
+DROP TABLE IF EXISTS soundTracks;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS genres;
+DROP TABLE IF EXISTS countries;
+DROP TABLE IF EXISTS actorIDs;
+DROP TABLE IF EXISTS companies;*/
 
 CREATE TABLE genres(
      genreID                  int NOT NULL,
      genre                    varchar(20) NOT NULL,
-     PRIMARY KEY(genreID)
-)
+	 PRIMARY KEY(genreID)
+);
 
 CREATE TABLE countries(
      countryID                int NOT NULL,
      name                     varchar(20) NOT NULL,
      PRIMARY KEY(countryID)
-)
+);
 
 CREATE TABLE actorIDs(
-     id                       int NOT NULL,
+     actorid                       int NOT NULL,
      name                     varchar(30) NOT NULL,
-     PRIMARY KEY(id)
-)
-
-CREATE TABLE actorMovies(
-     FOREIGN KEY(id)          int REFERENCES actorIDs.id,
-     FOREIGN KEY(movieID)     int REFERENCES movies.movieID,
-     PRIMARY KEY(id, movieID)
-)
-
-CREATE TABLE directorIDs(
-     id                       int NOT NULL,
-     name                     varchar(30) NOT NULL,
-     PRIMARY KEY(id)
-)
-
-CREATE TABLE directorMovies(
-     FOREIGN KEY(id)          int REFERENCES directorIDs.id,
-     FOREIGN KEY(movieID)     int REFERENCES movies.movieID,
-     PRIMARY KEY(id, movieID)
-)
-
-CREATE TABLE reviewers(
-     id                       int NOT NULL,
-     name                     varchar(30) NOT NULL,
-     FOREIGN KEY(company)     int REFERENCES companies.cID,
-     PRIMARY KEY(id)
-)
-
-CREATE TABLE reviews(
-     FOREIGN KEY(reviewer)    int REFERENCES reveiwers.id,
-     FOREIGN KEY(moviesID)    int REFERENCES movies.movieID,
-     rating                   int NOT NULL,
-     reviewDate                     datetime NOT NULL,
-     PRIMARY KEY(reviewer, moviesID)
-)
+     PRIMARY KEY(actorid)
+);
 
 CREATE TABLE companies(
-     cID                      int NOT NULL,
+     companyID                      int NOT NULL,
      name                     varchar(20) NOT NULL,
      address                  varchar(30) NOT NULL,
-     PRIMARY KEY(cID)
-)
+     PRIMARY KEY(companyID)
+);
 
-CREATE TABLE soundtracks(
-     FOREIGN KEY(movieID)     int REFERENCES movies.movieID,
-     title                    varchar(50) NOT NULL,
-     releaseDate              datetime NOT NULL,
+CREATE TABLE movies(
+     movieID                  INT NOT NULL,
+     releaseDate              DATETIME NOT NULL,
+     name                     varchar(50) NOT NULL,
+     movielength              INT NOT NULL,
+	 gID 					  INT,
+     FOREIGN KEY(gID) 	  REFERENCES genres(genreID),
+	 cID					  INT,
+     FOREIGN KEY(cID)         REFERENCES companies(companyID),
+	 producedIn               INT,
+     FOREIGN KEY(producedIn)  REFERENCES countries(countryID),
+	 PRIMARY KEY(movieID)
+);
+
+CREATE TABLE actorMovies(
+     actorMovieID 			  INT,
+	 FOREIGN KEY(id)          REFERENCES actorIDs(id),
+	 movID 				  	  INT,
+     FOREIGN KEY(movID)         REFERENCES movies(movieID),
+     PRIMARY KEY(actorMovieID, movID)
+);
+
+CREATE TABLE directorIDs(
+     directorID                       int NOT NULL,
+     name                     varchar(30) NOT NULL,
+     PRIMARY KEY(directorID)
+);
+
+CREATE TABLE directorMovies(
+	 directorMovieID 					  INT,
+     FOREIGN KEY(directorMovieID)         REFERENCES directorIDs(directorID),
+	 movID 			      INT,
+     FOREIGN KEY(movID)     REFERENCES movies(movieID),
+     PRIMARY KEY(directorMovieID, movID)
+);
+
+CREATE TABLE reviewers(
+     id                       INT NOT NULL,
+     name                     varchar(30) NOT NULL,
+	 company 				  INT,
+     FOREIGN KEY(company)     REFERENCES companies(cID),
+     PRIMARY KEY(id)
+);
+
+CREATE TABLE soundTracks(
+	 movieID				  INT,
+     FOREIGN KEY(movieID)     REFERENCES movies(movieID),
+     title                    varchar(30) NOT NULL,
+     releaseDate              int NOT NULL,
      numTracks                int 
-     PRIMARY KEY(movieID)
-)
+);
+
+CREATE TABLE review(
+	rID 				  INT,
+	FOREIGN KEY(rID)   REFERENCES reviewers(id),
+	movieID					  INT,
+	FOREIGN KEY(movieID)      REFERENCES movies(movieID),
+	rating					  INT NOT NULL,
+	reviewDate 				  INT NOT NULL,
+	PRIMARY KEY(rating)
+);
