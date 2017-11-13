@@ -11,21 +11,21 @@ DROP TABLE IF EXISTS actorIDs;
 DROP TABLE IF EXISTS companies;*/
 
 CREATE TABLE genres(
-     genreID                  int NOT NULL,
+     genreID                  INT NOT NULL,
      genre                    varchar(20) NOT NULL,
 	 PRIMARY KEY(genreID)
 );
 
 CREATE TABLE countries(
-     countryID                int NOT NULL,
+     countryID                INT NOT NULL,
      name                     varchar(20) NOT NULL,
      PRIMARY KEY(countryID)
 );
 
 CREATE TABLE actorIDs(
-     actorid                       int NOT NULL,
+     actorID                       INT NOT NULL,
      name                     varchar(30) NOT NULL,
-     PRIMARY KEY(actorid)
+     PRIMARY KEY(actorID)
 );
 
 CREATE TABLE companies(
@@ -51,7 +51,7 @@ CREATE TABLE movies(
 
 CREATE TABLE actorMovies(
      actorMovieID 			  INT,
-	 FOREIGN KEY(id)          REFERENCES actorIDs(id),
+	 FOREIGN KEY(actorMovieID)          REFERENCES actorIDs(actorID),
 	 movID 				  	  INT,
      FOREIGN KEY(movID)         REFERENCES movies(movieID),
      PRIMARY KEY(actorMovieID, movID)
@@ -72,16 +72,16 @@ CREATE TABLE directorMovies(
 );
 
 CREATE TABLE reviewers(
-     id                       INT NOT NULL,
+     reviewerID                       INT NOT NULL,
      name                     varchar(30) NOT NULL,
 	 company 				  INT,
-     FOREIGN KEY(company)     REFERENCES companies(cID),
-     PRIMARY KEY(id)
+     FOREIGN KEY(company)     REFERENCES companies(companyID),
+     PRIMARY KEY(reviewerID)
 );
 
 CREATE TABLE soundTracks(
-	 movieID				  INT,
-     FOREIGN KEY(movieID)     REFERENCES movies(movieID),
+	 movID				  INT,
+     FOREIGN KEY(movID)     REFERENCES movies(movieID),
      title                    varchar(30) NOT NULL,
      releaseDate              int NOT NULL,
      numTracks                int 
@@ -89,9 +89,9 @@ CREATE TABLE soundTracks(
 
 CREATE TABLE review(
 	rID 				  INT,
-	FOREIGN KEY(rID)   REFERENCES reviewers(id),
-	movieID					  INT,
-	FOREIGN KEY(movieID)      REFERENCES movies(movieID),
+	FOREIGN KEY(rID)   REFERENCES reviewers(reviewerID),
+	movID					  INT,
+	FOREIGN KEY(movID)      REFERENCES movies(movieID),
 	rating					  INT NOT NULL,
 	reviewDate 				  INT NOT NULL,
 	PRIMARY KEY(rating)
