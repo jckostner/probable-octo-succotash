@@ -17,3 +17,5 @@ C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Projec
 C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csproj.GenerateResource.Cache
 C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.exe
 C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.pdb
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\MySql.Data.dll
+C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\MySql.Data.xml
