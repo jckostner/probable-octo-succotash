@@ -31,12 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -58,7 +54,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.applyButton = new System.Windows.Forms.Button();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.checkBox11 = new System.Windows.Forms.CheckBox();
@@ -77,7 +72,8 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -92,6 +88,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(13, 1);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
@@ -110,12 +107,12 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Size = new System.Drawing.Size(973, 679);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Search";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox1);
+            this.groupBox3.Controls.Add(this.richTextBox1);
             this.groupBox3.Location = new System.Drawing.Point(645, 0);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
@@ -125,23 +122,9 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Results.";
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(7, 34);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(309, 500);
-            this.listBox1.TabIndex = 0;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.searchButton);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.textBox8);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.textBox7);
             this.groupBox2.Controls.Add(this.label9);
@@ -170,41 +153,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Enter search parameters.";
             // 
-            // label12
+            // searchButton
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(26, 529);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(114, 17);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Search a Phrase";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(29, 548);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(228, 22);
-            this.textBox9.TabIndex = 21;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(26, 461);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 17);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Sound Track";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(29, 480);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(228, 22);
-            this.textBox8.TabIndex = 19;
+            this.searchButton.Location = new System.Drawing.Point(7, 610);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(323, 33);
+            this.searchButton.TabIndex = 23;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // label10
             // 
@@ -271,7 +228,7 @@
             "4+ Stars",
             "5+ Stars"});
             this.comboBox3.Location = new System.Drawing.Point(29, 368);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(160, 24);
             this.comboBox3.TabIndex = 12;
@@ -290,7 +247,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(116, 315);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(44, 22);
             this.textBox5.TabIndex = 10;
@@ -298,7 +255,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(27, 314);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(44, 22);
             this.textBox4.TabIndex = 9;
@@ -343,7 +300,7 @@
             "War",
             "Western"});
             this.comboBox2.Location = new System.Drawing.Point(28, 257);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(160, 24);
             this.comboBox2.TabIndex = 6;
@@ -372,7 +329,7 @@
             "Mexico",
             "United Kingdom"});
             this.comboBox1.Location = new System.Drawing.Point(28, 149);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 4;
@@ -417,7 +374,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.applyButton);
-            this.groupBox1.Controls.Add(this.checkBox14);
             this.groupBox1.Controls.Add(this.checkBox13);
             this.groupBox1.Controls.Add(this.checkBox12);
             this.groupBox1.Controls.Add(this.checkBox11);
@@ -439,29 +395,18 @@
             // applyButton
             // 
             this.applyButton.Location = new System.Drawing.Point(7, 318);
-            this.applyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.applyButton.Margin = new System.Windows.Forms.Padding(4);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(281, 28);
             this.applyButton.TabIndex = 9;
             this.applyButton.Text = "Apply";
             this.applyButton.UseVisualStyleBackColor = true;
             // 
-            // checkBox14
-            // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(7, 287);
-            this.checkBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(75, 21);
-            this.checkBox14.TabIndex = 8;
-            this.checkBox14.Text = "Phrase";
-            this.checkBox14.UseVisualStyleBackColor = true;
-            // 
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
             this.checkBox13.Location = new System.Drawing.Point(7, 258);
-            this.checkBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox13.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(111, 21);
             this.checkBox13.TabIndex = 7;
@@ -472,7 +417,7 @@
             // 
             this.checkBox12.AutoSize = true;
             this.checkBox12.Location = new System.Drawing.Point(7, 231);
-            this.checkBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox12.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.Size = new System.Drawing.Size(89, 21);
             this.checkBox12.TabIndex = 6;
@@ -483,7 +428,7 @@
             // 
             this.checkBox11.AutoSize = true;
             this.checkBox11.Location = new System.Drawing.Point(7, 206);
-            this.checkBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox11.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(71, 21);
             this.checkBox11.TabIndex = 5;
@@ -494,7 +439,7 @@
             // 
             this.checkBox10.AutoSize = true;
             this.checkBox10.Location = new System.Drawing.Point(7, 178);
-            this.checkBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox10.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox10.Name = "checkBox10";
             this.checkBox10.Size = new System.Drawing.Size(116, 21);
             this.checkBox10.TabIndex = 4;
@@ -505,7 +450,7 @@
             // 
             this.checkBox9.AutoSize = true;
             this.checkBox9.Location = new System.Drawing.Point(7, 126);
-            this.checkBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox9.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(98, 21);
             this.checkBox9.TabIndex = 1;
@@ -567,7 +512,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Size = new System.Drawing.Size(973, 679);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Report";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
@@ -661,14 +606,23 @@
             this.textBox2.Size = new System.Drawing.Size(228, 22);
             this.textBox2.TabIndex = 0;
             // 
-            // searchButton
+            // tabPage3
             // 
-            this.searchButton.Location = new System.Drawing.Point(7, 610);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(323, 33);
-            this.searchButton.TabIndex = 23;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(973, 679);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Admin";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(7, 27);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(311, 442);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
@@ -721,7 +675,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox14;
         private System.Windows.Forms.CheckBox checkBox13;
         private System.Windows.Forms.CheckBox checkBox12;
         private System.Windows.Forms.CheckBox checkBox11;
@@ -736,17 +689,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button applyButton;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
