@@ -14,7 +14,7 @@ public class Query
     {
         string connectionString = null;
         MySqlConnection cnn;
-        connectionString = "server=mysql.cs.ksu.edu/jckostner94;port=3306;database=jckostner94;uid=jckostner94;pwd=Darba1994!;";
+        connectionString = "server=mysql.cs.ksu.edu;port=3306;database=jckostner94;uid=jckostner94;pwd=Darba1994!;";
         cnn = new MySqlConnection(connectionString);
         try
         {
