@@ -16,6 +16,7 @@ namespace CIS560Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Query.connectDatabase();
             Application.Run(new Form1());
         }
     }
