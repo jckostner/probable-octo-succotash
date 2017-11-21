@@ -1,4 +1,4 @@
-INSERT INTO myTable (id,name) VALUES (1,"Lars Byrd"),(2,"Murphy Gates"),(3,"Callum Morton"),(4,"Jeremy Bullock"),(5,"Palmer Hansen"),(6,"Jerome Soto"),(7,"Fay Gibbs"),(8,"Acton Moran"),(9,"Cailin Obrien"),
+INSERT INTO ActorIDs(id,name) VALUES (2,"Murphy Gates"),(3,"Callum Morton"),(4,"Jeremy Bullock"),(5,"Palmer Hansen"),(6,"Jerome Soto"),(7,"Fay Gibbs"),(8,"Acton Moran"),(9,"Cailin Obrien"),
 (10,"Ferris Cox"),(11,"Lev Avery"),(12,"Valentine Padilla"),(13,"Armand Lindsay"),(14,"Jamal Pruitt"),(15,"Joseph Joyce"),(16,"Althea Hahn"),(17,"Garrett Hale"),(18,"Leah Williams"),(19,"Kaseem Rodriquez"),
 (20,"Brandon Dyer"),(21,"Sierra Hicks"),(22,"Fatima Gentry"),(23,"Elijah Mccall"),(24,"Kyra Ellison"),(25,"Andrew Lang"),(26,"Clinton Delaney"),(27,"Drake Franks"),(28,"Tamara Carver"),(29,"Casey Mcknight"),
 (30,"Denton Waters"),(31,"Gannon Norton"),(32,"Colton Head"),(33,"Kirestin Morin"),(34,"Dora Mcdonald"),(35,"Evangeline Mills"),(36,"Bert Knapp"),(37,"Basia Alford"),(38,"Chancellor Maynard"),(39,"Armand Santana"),
