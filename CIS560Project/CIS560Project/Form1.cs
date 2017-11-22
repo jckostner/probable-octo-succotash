@@ -53,15 +53,20 @@ namespace CIS560Project
         {
             //starts list of queries
             string Title_Search = "SELECT * FROM movies WHERE name LIKE '%" + MovieTitleTextBox.Text.ToString() + "%'"; //Gets movie title - 1
-            string ActorName_Search = "SELECT * FROM actorIDs aid, actorMovies am, movies m WHERE aid.name ='" + ActorNameTextBox.Text.ToString() + "' and aid.actorID = am.actorMovieID and m.movieID = am.movID"; //6 is movie title
+            string ActorName_Search = "SELECT * FROM actorIDs aid, actorMovies am, movies m WHERE aid.name ='" + ActorNameTextBox.Text.ToString() + "' and aid.actorID = am.actorMovieID and m.movieID = am.movID"; //gets movie titles based on actor
+            string DirectorName_Search = "SELECT * FROM directorIDs did, directorMovies dm, movies m WHERE did.name ='" + DirectorNameTextBox.Text.ToString() + "' and did.directorID = dm.directorMovieID and m.movieID = dm.movID"; //gets movie titles based on director
+            string Country_Search = "SELECT * FROM countries c, movies m WHERE c.name ='" + CountryBox.SelectedIndex.ToString() + "' and c.countryID = m.cID"; //movie titles based on country
+            string Genre_Search = "SELECT * FROM genres g, movies m WHERE g.genre ='" + GenreBox.SelectedIndex.ToString() + "' and g.genreID = m.gID"; //movie titles based on genre
+            string Between_Search = "SELECT * FROM movies WHERE releaseDate BETWEEN" + ReleasedBox1 + " AND " + ReleasedBox2; //gets movies between the two dates
+            string Rating_Search = "SELECT * FROM review r, movies m WHERE r.rating ='" + RatingBox.SelectedIndex.ToString() + "' and m.movieID = r.movID"; //movie titles based on rating
 
             MySqlCommand cmd = new MySqlCommand(ActorName_Search, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
-            while (rdr.Read())
+           /* while (rdr.Read())
             {
                richTextBox1.Text = rdr[0].ToString() + rdr[6].ToString();
-            }
+            }*/
            
         }
 
