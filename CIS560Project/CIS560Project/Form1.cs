@@ -51,23 +51,60 @@ namespace CIS560Project
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            Results.Items.Clear(); //clears all items
+
             //starts list of queries
-            string Title_Search = "SELECT * FROM movies WHERE name LIKE '%" + MovieTitleTextBox.Text.ToString() + "%'"; //Gets movie title - 1
-            string ActorName_Search = "SELECT * FROM actorIDs aid, actorMovies am, movies m WHERE aid.name ='" + ActorNameTextBox.Text.ToString() + "' and aid.actorID = am.actorMovieID and m.movieID = am.movID"; //gets movie titles based on actor
             string DirectorName_Search = "SELECT * FROM directorIDs did, directorMovies dm, movies m WHERE did.name ='" + DirectorNameTextBox.Text.ToString() + "' and did.directorID = dm.directorMovieID and m.movieID = dm.movID"; //gets movie titles based on director
             string Country_Search = "SELECT * FROM countries c, movies m WHERE c.name ='" + CountryBox.SelectedIndex.ToString() + "' and c.countryID = m.cID"; //movie titles based on country
             string Genre_Search = "SELECT * FROM genres g, movies m WHERE g.genre ='" + GenreBox.SelectedIndex.ToString() + "' and g.genreID = m.gID"; //movie titles based on genre
             string Between_Search = "SELECT * FROM movies WHERE releaseDate BETWEEN" + ReleasedBox1 + " AND " + ReleasedBox2; //gets movies between the two dates
             string Rating_Search = "SELECT * FROM review r, movies m WHERE r.rating ='" + RatingBox.SelectedIndex.ToString() + "' and m.movieID = r.movID"; //movie titles based on rating
 
+
+            if(MovieTitleTextBox.Text != "")
+            {
+                searchMovieTitle();
+            }
+            else if(ActorNameCheckBox.Checked = true && ActorNameTextBox.Text != "")
+            {
+                searchActorName();
+            }
+
+             
+        }
+
+        private void searchMovieTitle()
+        {
+            //Gets all movie titles that are like what is typed in the textbox
+            string Title_Search = "SELECT * FROM movies WHERE name LIKE '%" + MovieTitleTextBox.Text.ToString() + "%'"; 
+            MySqlCommand cmd = new MySqlCommand(Title_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[2].ToString());                   
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchActorName()
+        {
+            //movie titles based on actor name
+            string ActorName_Search = "SELECT * FROM actorIDs aid, actorMovies am, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and m.movieID = am.movID"; //gets movie titles based on actor
             MySqlCommand cmd = new MySqlCommand(ActorName_Search, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
-           /* while (rdr.Read())
+            do
             {
-               richTextBox1.Text = rdr[0].ToString() + rdr[6].ToString();
-            }*/
-           
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[6].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
         }
 
         private void ActorNameCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -142,6 +179,27 @@ namespace CIS560Project
             {
                 RatingBox.Enabled = false;
             }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            //Resets all fields 
+            Results.Items.Clear();
+            MovieTitleTextBox.Text = "";
+            ActorNameTextBox.Text = "";
+            DirectorNameTextBox.Text = "";
+            CountryBox.Text = "Please Select";
+            GenreBox.Text = "Please Select";
+            ReleasedBox1.Text = "";
+            ReleasedBox2.Text = "";
+            RatingBox.Text = "Please Select";
+            ActorNameCheckBox.Checked = false;
+            DirectCheckBox.Checked = false;
+            CountryCheckBox.Checked = false;
+            GenreCheckBox.Checked = false;
+            RatingCheckBox.Checked = false;
+            ReleaseCheckBox.Checked = false;
+
         }
     }
 }

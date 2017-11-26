@@ -31,7 +31,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -68,6 +67,8 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.Results = new System.Windows.Forms.ListBox();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -106,7 +107,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.Results);
             this.groupBox3.Location = new System.Drawing.Point(464, 0);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
@@ -116,17 +117,9 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Results.";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 22);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(235, 398);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ClearButton);
             this.groupBox2.Controls.Add(this.searchButton);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
@@ -156,7 +149,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(4, 393);
+            this.searchButton.Location = new System.Drawing.Point(4, 372);
             this.searchButton.Margin = new System.Windows.Forms.Padding(2);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(242, 27);
@@ -203,11 +196,11 @@
             // 
             this.RatingBox.FormattingEnabled = true;
             this.RatingBox.Items.AddRange(new object[] {
-            "1+ Stars",
-            "2+ Stars",
-            "3+ Stars",
-            "4+ Stars",
-            "5+ Stars"});
+            "1 Stars",
+            "2 Stars",
+            "3 Stars",
+            "4 Stars",
+            "5 Stars"});
             this.RatingBox.Location = new System.Drawing.Point(22, 339);
             this.RatingBox.Name = "RatingBox";
             this.RatingBox.Size = new System.Drawing.Size(121, 21);
@@ -443,7 +436,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(728, 549);
+            this.tabPage2.Size = new System.Drawing.Size(711, 549);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Report";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -544,10 +537,29 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(728, 549);
+            this.tabPage3.Size = new System.Drawing.Size(711, 549);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Admin";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // Results
+            // 
+            this.Results.FormattingEnabled = true;
+            this.Results.Location = new System.Drawing.Point(5, 39);
+            this.Results.Name = "Results";
+            this.Results.Size = new System.Drawing.Size(237, 381);
+            this.Results.TabIndex = 0;
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(4, 403);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(242, 27);
+            this.ClearButton.TabIndex = 24;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // Form1
             // 
@@ -615,7 +627,8 @@
         private System.Windows.Forms.TextBox MovieTitleTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TabPage tabPage3;
-        public System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ListBox Results;
+        private System.Windows.Forms.Button ClearButton;
     }
 }
 
