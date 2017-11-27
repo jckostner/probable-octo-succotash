@@ -53,11 +53,6 @@ namespace CIS560Project
         {
             Results.Items.Clear(); //clears all items
 
-            //starts list of queries
-            string Between_Search = "SELECT * FROM movies WHERE releaseDate BETWEEN" + ReleasedBox1 + " AND " + ReleasedBox2; //gets movies between the two dates
-            string Rating_Search = "SELECT * FROM review r, movies m WHERE r.rating ='" + RatingBox.SelectedIndex.ToString() + "' and m.movieID = r.movID"; //movie titles based on rating
-
-
             if(MovieTitleTextBox.Text != "")
             {
                 searchMovieTitle();
@@ -112,10 +107,49 @@ namespace CIS560Project
             {
                 searchGenre();
             }
+            else if(ReleaseCheckBox.Checked = true && ReleasedBox1.Text != "" && ReleasedBox2.Text != "")
+            {
+                searchRelease();
+            }
+            else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
+            {
+                searchRating();
+            }
             else
             {
                 //none selected - do nothing
             }
+        }
+
+        private void searchRating()
+        {
+            string Rating_Search = "SELECT * FROM review r, movies m WHERE r.rating ='" + RatingBox.SelectedItem.ToString() + "' and m.movieID = r.movID"; //movie titles based on rating
+            MySqlCommand cmd = new MySqlCommand(Rating_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[4].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        } //dont have ratings yet
+
+        private void searchRelease()
+        {
+            string Between_Search = "SELECT * FROM movies m WHERE m.releaseDate BETWEEN '" + ReleasedBox1.Text.ToString() + "-01-01'" + " AND '" + ReleasedBox2.Text.ToString() + "-12-31'"; //gets movies between the two dates
+            MySqlCommand cmd = new MySqlCommand(Between_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[2].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
         }
 
         private void searchGenre()
@@ -281,10 +315,13 @@ namespace CIS560Project
             MovieTitleTextBox.Text = "";
             ActorNameTextBox.Text = "";
             DirectorNameTextBox.Text = "";
+            CountryBox.SelectedIndex = -1;
             CountryBox.Text = "Please Select";
+            GenreBox.SelectedIndex = -1;
             GenreBox.Text = "Please Select";
             ReleasedBox1.Text = "";
             ReleasedBox2.Text = "";
+            RatingBox.SelectedIndex = -1;
             RatingBox.Text = "Please Select";
             ActorNameCheckBox.Checked = false;
             DirectCheckBox.Checked = false;
@@ -292,6 +329,7 @@ namespace CIS560Project
             GenreCheckBox.Checked = false;
             RatingCheckBox.Checked = false;
             ReleaseCheckBox.Checked = false;
+            
 
         }
     }
