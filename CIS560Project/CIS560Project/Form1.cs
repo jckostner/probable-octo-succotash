@@ -54,9 +54,6 @@ namespace CIS560Project
             Results.Items.Clear(); //clears all items
 
             //starts list of queries
-            string DirectorName_Search = "SELECT * FROM directorIDs did, directorMovies dm, movies m WHERE did.name ='" + DirectorNameTextBox.Text.ToString() + "' and did.directorID = dm.directorMovieID and m.movieID = dm.movID"; //gets movie titles based on director
-            string Country_Search = "SELECT * FROM countries c, movies m WHERE c.name ='" + CountryBox.SelectedIndex.ToString() + "' and c.countryID = m.cID"; //movie titles based on country
-            string Genre_Search = "SELECT * FROM genres g, movies m WHERE g.genre ='" + GenreBox.SelectedIndex.ToString() + "' and g.genreID = m.gID"; //movie titles based on genre
             string Between_Search = "SELECT * FROM movies WHERE releaseDate BETWEEN" + ReleasedBox1 + " AND " + ReleasedBox2; //gets movies between the two dates
             string Rating_Search = "SELECT * FROM review r, movies m WHERE r.rating ='" + RatingBox.SelectedIndex.ToString() + "' and m.movieID = r.movID"; //movie titles based on rating
 
@@ -67,10 +64,106 @@ namespace CIS560Project
             }
             else if(ActorNameCheckBox.Checked = true && ActorNameTextBox.Text != "")
             {
-                searchActorName();
+                if(DirectCheckBox.Checked = true && DirectorNameTextBox.Text != "")
+                {
+                    //Seach by actor and director
+                }
+                else if(GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
+                {
+                    //search by actor and genre
+                }
+                else if(ReleaseCheckBox.Checked = true && (ReleasedBox1.Text != "" && ReleasedBox2.Text != ""))
+                {
+                    //search by release date and actor
+                }
+                else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
+                {
+                    //search by rating and actor
+                }
+                else
+                {
+                    searchActorName(); //just by actor name
+                }
             }
+            else if(DirectCheckBox.Checked = true && DirectorNameTextBox.Text != "")
+            {
+                if (GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
+                {
+                    //search by director and genre
+                }
+                else if(ReleaseCheckBox.Checked = true && (ReleasedBox1.Text != "" && ReleasedBox2.Text != ""))
+                {
+                    //search by director and release date
+                }
+                else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
+                {
+                    //search by rating and director
+                }
+                else
+                {
+                    searchDirectorName();
+                }
+            }
+            else if(CountryCheckBox.Checked = true && CountryBox.SelectedIndex >= 0)
+            {
+                searchCountry();
+            }
+            else if(GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
+            {
+                searchGenre();
+            }
+            else
+            {
+                //none selected - do nothing
+            }
+        }
 
-             
+        private void searchGenre()
+        {
+            string Genre_Search = "SELECT * FROM genres g, movies m WHERE g.genre ='" + GenreBox.SelectedItem.ToString() + "' and g.genreID = m.gID"; //movie titles based on genre
+            MySqlCommand cmd = new MySqlCommand(Genre_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[4].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchCountry()
+        {           
+            string Country_Search = "SELECT * FROM countries c, movies m WHERE c.name ='" + CountryBox.SelectedItem.ToString() + "' and c.countryID = m.producedIn"; //movie titles based on country
+            MySqlCommand cmd = new MySqlCommand(Country_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[4].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchDirectorName()
+        {
+            string DirectorName_Search = "SELECT * FROM directorIDs did, directorMovies dm, movies m WHERE did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and m.movieID = dm.movID"; //gets movie titles based on director
+            MySqlCommand cmd = new MySqlCommand(DirectorName_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[6].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
         }
 
         private void searchMovieTitle()
