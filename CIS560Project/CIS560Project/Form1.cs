@@ -101,15 +101,50 @@ namespace CIS560Project
             }
             else if(CountryCheckBox.Checked = true && CountryBox.SelectedIndex >= 0)
             {
-                searchCountry();
+                if(GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
+                {
+                    //country and genre search
+                }
+                else if(ReleaseCheckBox.Checked = true && ReleasedBox1.Text != "" && ReleasedBox2.Text != "")
+                {
+                    //release and country search
+                }
+                else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
+                {
+                    //rating and country search
+                }
+                else
+                {
+                    searchCountry();
+                }               
             }
             else if(GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
             {
-                searchGenre();
+                if(ReleaseCheckBox.Checked = true && ReleasedBox1.Text != "" && ReleasedBox2.Text != "")
+                {
+                    //genre and release date
+                }
+                else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
+                {
+                    //rating and genre
+                }
+                else
+                {
+                    searchGenre();
+                }
+                
             }
             else if(ReleaseCheckBox.Checked = true && ReleasedBox1.Text != "" && ReleasedBox2.Text != "")
             {
-                searchRelease();
+                if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
+                {
+                    //rating and release
+                }
+                else
+                {
+                    searchRelease();
+                }
+                
             }
             else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
             {
