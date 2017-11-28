@@ -61,11 +61,11 @@ namespace CIS560Project
             {
                 if(DirectCheckBox.Checked = true && DirectorNameTextBox.Text != "")
                 {
-                    //Seach by actor and director
+                    searchActorDirector();
                 }
                 else if(GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
                 {
-                    //search by actor and genre
+                    searchActorGenre();
                 }
                 else if(ReleaseCheckBox.Checked = true && (ReleasedBox1.Text != "" && ReleasedBox2.Text != ""))
                 {
@@ -155,6 +155,38 @@ namespace CIS560Project
                 //none selected - do nothing
             }
         }
+
+        private void searchActorGenre()
+        {
+            string ActorGenre_Search = "SELECT * FROM actorIDs aid, actorMovies am, genres g, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and m.movieID = am.movID and g.genre ='" + GenreBox.SelectedItem.ToString() + "' and g.genreID = m.gID";
+            MySqlCommand cmd = new MySqlCommand(ActorGenre_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[8].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchActorDirector()
+        {
+            string ActorDirector_Search = "SELECT * FROM actorIDs aid, actorMovies am, directorIDs did, directorMovies dm, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and m.movieID = dm.movID and dm.movID = am";
+            MySqlCommand cmd = new MySqlCommand(ActorDirector_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[10].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        } //needs work
 
         private void searchRating()
         {
