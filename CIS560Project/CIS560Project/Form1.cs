@@ -69,11 +69,11 @@ namespace CIS560Project
                 }
                 else if(ReleaseCheckBox.Checked = true && (ReleasedBox1.Text != "" && ReleasedBox2.Text != ""))
                 {
-                    //search by release date and actor
+                    searchActorRelease();
                 }
                 else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
                 {
-                    //search by rating and actor
+                    searchActorRating();
                 }
                 else
                 {
@@ -84,15 +84,15 @@ namespace CIS560Project
             {
                 if (GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
                 {
-                    //search by director and genre
+                    searchDirectorGenre();
                 }
                 else if(ReleaseCheckBox.Checked = true && (ReleasedBox1.Text != "" && ReleasedBox2.Text != ""))
                 {
-                    //search by director and release date
+                    searchDirectorRelease();
                 }
                 else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
                 {
-                    //search by rating and director
+                    searchDirectorRating();
                 }
                 else
                 {
@@ -103,11 +103,11 @@ namespace CIS560Project
             {
                 if(GenreCheckBox.Checked = true && GenreBox.SelectedIndex >= 0)
                 {
-                    //country and genre search
+                    searchCountryGenre();
                 }
                 else if(ReleaseCheckBox.Checked = true && ReleasedBox1.Text != "" && ReleasedBox2.Text != "")
                 {
-                    //release and country search
+                    searchCountryRelease();
                 }
                 else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
                 {
@@ -156,6 +156,107 @@ namespace CIS560Project
             }
         }
 
+        private void searchCountryRelease()
+        {
+            string CountryRelease_search = "SELECT * FROM movies m, countries c WHERE c.name = '" + CountryBox.SelectedItem.ToString() + "' and  m.releaseDate BETWEEN '" + ReleasedBox1.Text.ToString() + "-01-01'" + " AND '" + ReleasedBox2.Text.ToString() + "-12-31' and m.producedIn = c.countryID";
+            MySqlCommand cmd = new MySqlCommand(CountryRelease_search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[2].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchCountryGenre()
+        {
+            string CountryGenre_search = "SELECT * FROM countries c, genres g, movies m WHERE c.name = '" + CountryBox.SelectedItem.ToString() + "' and g.genre = '" + GenreBox.SelectedItem.ToString() + "' and g.genreID = m.gID and c.countryID = m.producedIn";
+            MySqlCommand cmd = new MySqlCommand(CountryGenre_search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[6].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchDirectorRating() //need to populate rating table first
+        {
+
+        }
+
+        private void searchDirectorRelease()
+        {
+            string DirectorRelease_Search = "SELECT * FROM directorIDs did, directorMovies dm, movies m WHERE did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and dm.movID = m.movieID and m.releaseDate BETWEEN '" + ReleasedBox1.Text.ToString() + "-01-01'" + " AND '" + ReleasedBox2.Text.ToString() + "-12-31'";
+            MySqlCommand cmd = new MySqlCommand(DirectorRelease_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[6].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchDirectorGenre()
+        {
+            string DirectorGenre_search = "SELECT * FROM movies m, directorIDs did, directorMovies dm, genres g WHERE g.genre = '" + GenreBox.SelectedItem.ToString() + "' and did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and g.genreID = m.gID and dm.movID = m.movieID" ;
+            MySqlCommand cmd = new MySqlCommand(DirectorGenre_search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[2].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchActorRating() //need to populate rating table first
+        {
+            string ActorRating_search = "";
+            MySqlCommand cmd = new MySqlCommand(ActorRating_search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[6].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
+        private void searchActorRelease()
+        {
+            string ActorRelease_Search = "SELECT * FROM actorIDs aid, actorMovies am, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and am.movID = m.movieID and m.releaseDate BETWEEN '" + ReleasedBox1.Text.ToString() + "-01-01'" + " AND '" + ReleasedBox2.Text.ToString() + "-12-31'";
+            MySqlCommand cmd = new MySqlCommand(ActorRelease_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[6].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+        }
+
         private void searchActorGenre()
         {
             string ActorGenre_Search = "SELECT * FROM actorIDs aid, actorMovies am, genres g, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and m.movieID = am.movID and g.genre ='" + GenreBox.SelectedItem.ToString() + "' and g.genreID = m.gID";
@@ -174,7 +275,7 @@ namespace CIS560Project
 
         private void searchActorDirector()
         {
-            string ActorDirector_Search = "SELECT * FROM actorIDs aid, actorMovies am, directorIDs did, directorMovies dm, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and m.movieID = dm.movID and dm.movID = am";
+            string ActorDirector_Search = "SELECT * FROM actorIDs aid, actorMovies am, directorIDs did, directorMovies dm, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and m.movieID = dm.movID and dm.movID = am.movID";
             MySqlCommand cmd = new MySqlCommand(ActorDirector_Search, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -186,7 +287,7 @@ namespace CIS560Project
                 }
             } while (rdr.NextResult());
             rdr.Close();
-        } //needs work
+        } 
 
         private void searchRating()
         {
