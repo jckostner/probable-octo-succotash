@@ -1,0 +1,60 @@
+//director and genre
+
+Select * FROM movies x, countries y, genres z
+WHERE
+x.gID = z.genreID
+AND
+x.producedIn = y.countryID
+
+//director and release date
+
+SELECT * FROM directorIDs x, directorMovies y, movies z
+WHERE
+x.directorID = y.directorMovieID
+AND
+y.movID = z.movieID
+AND
+z.releaseDate BETWEEN '"1999-05-05"' AND '"2001-03-07"'
+
+rating and diector
+// could not do
+
+//actor and director
+
+SELECT * FROM actorIDs a, actorMovies b, directorIDs c, directorMovies d, movies e
+WHERE
+a.actorID = b.actorMovieID
+AND
+c.directorID = d.directorMovieID
+AND
+e.movieID = d.movID
+AND 
+b.movID = e.movieID
+
+//actor and genre
+
+SELECT * FROM actorIDs a, actorMovies b, genres c, movies d
+WHERE
+a.actorID = b.actorMovieID
+AND
+c.genreID = d.gID
+
+//release date and actor
+
+SELECT * FROM actorIDs x, actorMovies y, movies z
+WHERE
+x.actorID = y.actorMovieID
+AND
+y.movID = z.movieID
+AND
+z.releaseDate BETWEEN '"1999-05-05"' AND '"2001-03-07"'
+
+//genre and releaseDate
+
+SELECT * FROM genres x, movies y
+WHERE
+x.genreID = y.gID
+AND
+y.releaseDate BETWEEN '"1999-05-05"' AND '"2001-03-07"'
+
+
