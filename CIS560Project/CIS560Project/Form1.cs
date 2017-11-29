@@ -190,7 +190,18 @@ namespace CIS560Project
 
         private void searchDirectorRating() //need to populate rating table first
         {
+            string DirectorRating_Search = "SELECT * FROM directorIDs did, directorMovies dm, movies m, review r WHERE did.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and dm.movID = m.movieID and r.rating = '" + RatingBox.SelectedItem.ToString() + "'";
+            MySqlCommand cmd = new MySqlCommand(DirectorRating_Search, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
 
+            do
+            {
+                while (rdr.Read())
+                {
+                    Results.Items.Add(rdr[6].ToString());
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
         }
 
         private void searchDirectorRelease()
@@ -225,7 +236,7 @@ namespace CIS560Project
             rdr.Close();
         }
 
-        private void searchActorRating() //need to populate rating table first
+        private void searchActorRating() 
         {
             string ActorRating_search = "SELECT * FROM actorIDs aid, actorMovies am, movies m, review r WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and am.movID = m.movieID and r.rating = '" + RatingBox.SelectedItem.ToString() +"'";
             MySqlCommand cmd = new MySqlCommand(ActorRating_search, cnn);
