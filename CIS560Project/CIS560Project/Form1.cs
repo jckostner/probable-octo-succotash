@@ -73,11 +73,11 @@ namespace CIS560Project
                 }
                 else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
                 {
-                    searchActorRating();
+                    searchActorRating();//not done
                 }
                 else
                 {
-                    searchActorName(); //just by actor name
+                    searchActorName(); 
                 }
             }
             else if(DirectCheckBox.Checked = true && DirectorNameTextBox.Text != "")
@@ -92,7 +92,7 @@ namespace CIS560Project
                 }
                 else if(RatingCheckBox.Checked = true && RatingBox.SelectedIndex >= 0)
                 {
-                    searchDirectorRating();
+                    searchDirectorRating(); //not done
                 }
                 else
                 {
@@ -188,9 +188,9 @@ namespace CIS560Project
             rdr.Close();
         }
 
-        private void searchDirectorRating() //need to populate rating table first
+        private void searchDirectorRating()//needs work
         {
-            string DirectorRating_Search = "SELECT * FROM directorIDs did, directorMovies dm, movies m, review r WHERE did.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and dm.movID = m.movieID and r.rating = '" + RatingBox.SelectedItem.ToString() + "'";
+            string DirectorRating_Search = "";
             MySqlCommand cmd = new MySqlCommand(DirectorRating_Search, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -236,9 +236,9 @@ namespace CIS560Project
             rdr.Close();
         }
 
-        private void searchActorRating() 
+        private void searchActorRating() //needs work
         {
-            string ActorRating_search = "SELECT * FROM actorIDs aid, actorMovies am, movies m, review r WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and am.movID = m.movieID and r.rating = '" + RatingBox.SelectedItem.ToString() +"'";
+            string ActorRating_search = "";
             MySqlCommand cmd = new MySqlCommand(ActorRating_search, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
