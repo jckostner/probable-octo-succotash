@@ -227,7 +227,7 @@ namespace CIS560Project
 
         private void searchActorRating() //need to populate rating table first
         {
-            string ActorRating_search = "";
+            string ActorRating_search = "SELECT * FROM actorIDs aid, actorMovies am, movies m, review r WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and am.movID = m.movieID and r.rating = '" + RatingBox.SelectedItem.ToString() +"'";
             MySqlCommand cmd = new MySqlCommand(ActorRating_search, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -275,7 +275,7 @@ namespace CIS560Project
 
         private void searchActorDirector()
         {
-            string ActorDirector_Search = "SELECT * FROM actorIDs aid, actorMovies am, directorIDs did, directorMovies dm, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and m.movieID = dm.movID and dm.movID = am.movID";
+            string ActorDirector_Search = "SELECT * FROM actorIDs aid, actorMovies am, directorIDs did, directorMovies dm, movies m WHERE aid.name LIKE '%" + ActorNameTextBox.Text.ToString() + "%' and aid.actorID = am.actorMovieID and did.name LIKE '%" + DirectorNameTextBox.Text.ToString() + "%' and did.directorID = dm.directorMovieID and m.movieID = dm.movID and dm.movID = am.movID and am.movID = m.movieID";
             MySqlCommand cmd = new MySqlCommand(ActorDirector_Search, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -298,11 +298,11 @@ namespace CIS560Project
             {
                 while (rdr.Read())
                 {
-                    Results.Items.Add(rdr[4].ToString());
+                    Results.Items.Add(rdr[6].ToString());
                 }
             } while (rdr.NextResult());
             rdr.Close();
-        } //dont have ratings yet
+        } 
 
         private void searchRelease()
         {
@@ -407,10 +407,14 @@ namespace CIS560Project
             if(ActorNameCheckBox.Checked == true)
             {
                 ActorNameTextBox.Enabled = true;
+                CountryCheckBox.Enabled = false;
+                
             }
             else
             {
                 ActorNameTextBox.Enabled = false;
+                CountryCheckBox.Enabled = true;
+                
             }
         }
 
@@ -419,10 +423,12 @@ namespace CIS560Project
             if(DirectCheckBox.Checked == true)
             {
                 DirectorNameTextBox.Enabled = true;
+                CountryCheckBox.Enabled = false;
             }
             else
             {
                 DirectorNameTextBox.Enabled = false;
+                CountryCheckBox.Enabled = true;
             }
         }
 
