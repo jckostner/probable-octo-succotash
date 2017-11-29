@@ -1,0 +1,25 @@
+//rating and genre
+
+Select genres.genre, review.rating , movies.name
+from genres, review, movies
+WHERE
+genres.genreID = movies.gID
+AND
+review.movID = movies.movieID
+
+
+
+//rating and release
+
+Select review.rating , movies.releaseDate, movies.name
+from review, movies
+WHERE
+review.movID = movies.movieID
+
+// rating and country
+Select countries.name , review.rating, movies.name
+from review, movies, countries
+WHERE
+review.movID = movies.movieID
+AND
+countries.countryID = movies.cID
