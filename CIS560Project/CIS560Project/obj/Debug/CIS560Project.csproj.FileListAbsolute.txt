@@ -20,3 +20,14 @@ C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Projec
 C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\MySql.Data.dll
 C:\Users\Jacob\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\MySql.Data.xml
 C:\Users\Ryan Leroux\Desktop\octo-succotash\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\MySql.Data.xml
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.exe.config
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.exe
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\CIS560Project.pdb
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\bin\Debug\MySql.Data.xml
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csprojResolveAssemblyReference.cache
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.Form1.resources
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.Properties.Resources.resources
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csproj.GenerateResource.Cache
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.csproj.CoreCompileInputs.cache
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.exe
+D:\Jacob-Personal\GitHub\probable-octo-succotash\CIS560Project\CIS560Project\obj\Debug\CIS560Project.pdb

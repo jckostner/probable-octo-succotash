@@ -34,7 +34,7 @@ namespace CIS560Project
         private void connect()
         {
             string connectionString = null;
-            connectionString = "server=mysql.cs.ksu.edu;port=3306;database=rgleroux;uid=rgleroux;pwd=Team20;";
+            connectionString = "server=mysql.cs.ksu.edu;port=3306;database=rgleroux;uid=rgleroux;pwd=Team20;convert zero datetime=True";
             cnn = new MySqlConnection(connectionString);
 
             //attempts to open the connection
@@ -499,6 +499,83 @@ namespace CIS560Project
             ReleaseCheckBox.Checked = false;
             
 
+        }
+
+        private void reportButton_Click(object sender, EventArgs e)
+        {
+            reportResultsBox.Items.Clear();
+            //Checks if one of the items is selected.
+            if (Results.SelectedItem != null)
+            {
+                tabControl1.SelectTab(1);
+                string[] MovieInfo = new string[10];
+                string[] results = new string[10];
+
+                string MovieInfoString = "SELECT * FROM movies WHERE name = '" + Results.SelectedItem + "'";
+                MySqlCommand cmd = new MySqlCommand(MovieInfoString, cnn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                do
+                {
+                    for(int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        rdr.Read();
+                        MovieInfo[i] = rdr[i].ToString();
+                    }
+                } while (rdr.NextResult());
+                rdr.Close();
+                reportResultsBox.Items.Add(MovieInfo[2]);
+                reportResultsBox.Items.Add("    Release Date: " + MovieInfo[1].Substring(0, 8));
+                reportResultsBox.Items.Add("    Length (min): " + MovieInfo[3]);
+
+                string GenreString = "SELECT * FROM genres WHERE genreID = '" + MovieInfo[4] + "'";
+                cmd = new MySqlCommand(GenreString, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
+                results[0] = rdr[1].ToString();
+                rdr.Close();
+                reportResultsBox.Items.Add("    Genre: " + results[0]);
+
+                string ProducerString = "SELECT * FROM companies WHERE companyID = '" + MovieInfo[5] + "'";
+                cmd = new MySqlCommand(ProducerString, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
+                results[0] = rdr[1].ToString();
+                rdr.Close();
+                reportResultsBox.Items.Add("    Producer: " + results[0]);
+
+                string CountryString = "SELECT * FROM countries WHERE countryID = '" + MovieInfo[6] + "'";
+                cmd = new MySqlCommand(CountryString, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
+                results[0] = rdr[1].ToString();
+                rdr.Close();
+                reportResultsBox.Items.Add("    Country: " + results[0]);
+
+                string DirectorString = "SELECT * FROM directorMovies JOIN directorIDs ON " +
+                    "directorMovies.directorMovieID = directorIDs.directorID  WHERE movID = '" + 
+                    MovieInfo[0] + "'";
+                cmd = new MySqlCommand(DirectorString, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
+                results[0] = rdr[3].ToString();
+                rdr.Close();
+                reportResultsBox.Items.Add("    Director: " + results[0]);
+
+                string ActorsString = "SELECT * FROM actorMovies JOIN actorIDs ON actorMovies.actorMovieID" +
+                    "=actorIDs.actorID WHERE movID = '" + MovieInfo[0] + "'";
+                cmd = new MySqlCommand(ActorsString, cnn);
+                rdr = cmd.ExecuteReader();
+                reportResultsBox.Items.Add("    Actors: ");
+                do
+                {
+                    while (rdr.Read())
+                    {
+                        reportResultsBox.Items.Add("        " + rdr[3].ToString());
+                    }
+                } while (rdr.NextResult());
+                rdr.Close();
+
+            }
         }
     }
 }

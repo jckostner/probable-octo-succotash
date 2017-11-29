@@ -31,7 +31,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.Results = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -67,8 +69,8 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.Results = new System.Windows.Forms.ListBox();
-            this.ClearButton = new System.Windows.Forms.Button();
+            this.reportResultsBox = new System.Windows.Forms.ListBox();
+            this.reportButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -76,6 +78,7 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +91,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(719, 575);
+            this.tabControl1.Size = new System.Drawing.Size(719, 461);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -100,13 +103,14 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(711, 549);
+            this.tabPage1.Size = new System.Drawing.Size(711, 435);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Search";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.reportButton);
             this.groupBox3.Controls.Add(this.Results);
             this.groupBox3.Location = new System.Drawing.Point(464, 0);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
@@ -116,6 +120,14 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Results.";
+            // 
+            // Results
+            // 
+            this.Results.FormattingEnabled = true;
+            this.Results.Location = new System.Drawing.Point(3, 18);
+            this.Results.Name = "Results";
+            this.Results.Size = new System.Drawing.Size(242, 381);
+            this.Results.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -146,6 +158,17 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Enter search parameters.";
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(4, 403);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(242, 27);
+            this.ClearButton.TabIndex = 24;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // searchButton
             // 
@@ -436,7 +459,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(711, 549);
+            this.tabPage2.Size = new System.Drawing.Size(711, 435);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Report";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -447,11 +470,11 @@
             this.groupBox4.Controls.Add(this.checkBox6);
             this.groupBox4.Controls.Add(this.checkBox7);
             this.groupBox4.Controls.Add(this.checkBox8);
-            this.groupBox4.Location = new System.Drawing.Point(2, 5);
+            this.groupBox4.Location = new System.Drawing.Point(2, 0);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(224, 542);
+            this.groupBox4.Size = new System.Drawing.Size(224, 435);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
@@ -502,30 +525,31 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Location = new System.Drawing.Point(487, 5);
+            this.groupBox5.Controls.Add(this.reportResultsBox);
+            this.groupBox5.Location = new System.Drawing.Point(462, 0);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(243, 542);
+            this.groupBox5.Size = new System.Drawing.Size(245, 439);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox3";
+            this.groupBox5.Text = "Report Results";
             // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.textBox2);
-            this.groupBox6.Location = new System.Drawing.Point(230, 5);
+            this.groupBox6.Location = new System.Drawing.Point(230, 0);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(252, 542);
+            this.groupBox6.Size = new System.Drawing.Size(228, 439);
             this.groupBox6.TabIndex = 7;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "groupBox2";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(44, 40);
+            this.textBox2.Location = new System.Drawing.Point(27, 40);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(172, 20);
@@ -542,24 +566,24 @@
             this.tabPage3.Text = "Admin";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // Results
+            // reportResultsBox
             // 
-            this.Results.FormattingEnabled = true;
-            this.Results.Location = new System.Drawing.Point(5, 39);
-            this.Results.Name = "Results";
-            this.Results.Size = new System.Drawing.Size(237, 381);
-            this.Results.TabIndex = 0;
+            this.reportResultsBox.FormattingEnabled = true;
+            this.reportResultsBox.Location = new System.Drawing.Point(5, 27);
+            this.reportResultsBox.Name = "reportResultsBox";
+            this.reportResultsBox.Size = new System.Drawing.Size(237, 394);
+            this.reportResultsBox.TabIndex = 1;
             // 
-            // ClearButton
+            // reportButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(4, 403);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(2);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(242, 27);
-            this.ClearButton.TabIndex = 24;
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.reportButton.Location = new System.Drawing.Point(3, 404);
+            this.reportButton.Margin = new System.Windows.Forms.Padding(2);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.Size = new System.Drawing.Size(242, 27);
+            this.reportButton.TabIndex = 25;
+            this.reportButton.Text = "More Info";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
             // 
             // Form1
             // 
@@ -580,6 +604,7 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
@@ -629,6 +654,8 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ListBox Results;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button reportButton;
+        private System.Windows.Forms.ListBox reportResultsBox;
     }
 }
 
