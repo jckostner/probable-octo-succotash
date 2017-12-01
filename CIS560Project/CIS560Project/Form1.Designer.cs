@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Tab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.reportButton = new System.Windows.Forms.Button();
             this.Results = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ClearButton = new System.Windows.Forms.Button();
@@ -66,12 +67,18 @@
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.reportResultsBox = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.reportResultsBox = new System.Windows.Forms.ListBox();
-            this.reportButton = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.Tab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,19 +87,21 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // Tab
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(10, 1);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(719, 461);
-            this.tabControl1.TabIndex = 0;
+            this.Tab.Controls.Add(this.tabPage1);
+            this.Tab.Controls.Add(this.tabPage2);
+            this.Tab.Controls.Add(this.tabPage3);
+            this.Tab.Location = new System.Drawing.Point(10, 1);
+            this.Tab.Margin = new System.Windows.Forms.Padding(2);
+            this.Tab.Name = "Tab";
+            this.Tab.SelectedIndex = 0;
+            this.Tab.Size = new System.Drawing.Size(719, 461);
+            this.Tab.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -120,6 +129,17 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Results.";
+            // 
+            // reportButton
+            // 
+            this.reportButton.Location = new System.Drawing.Point(3, 404);
+            this.reportButton.Margin = new System.Windows.Forms.Padding(2);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.Size = new System.Drawing.Size(242, 27);
+            this.reportButton.TabIndex = 25;
+            this.reportButton.Text = "More Info";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
             // 
             // Results
             // 
@@ -535,6 +555,14 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Report Results";
             // 
+            // reportResultsBox
+            // 
+            this.reportResultsBox.FormattingEnabled = true;
+            this.reportResultsBox.Location = new System.Drawing.Point(5, 27);
+            this.reportResultsBox.Name = "reportResultsBox";
+            this.reportResultsBox.Size = new System.Drawing.Size(237, 394);
+            this.reportResultsBox.TabIndex = 1;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.textBox2);
@@ -557,44 +585,95 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(711, 549);
+            this.tabPage3.Size = new System.Drawing.Size(711, 435);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Admin";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // reportResultsBox
+            // groupBox7
             // 
-            this.reportResultsBox.FormattingEnabled = true;
-            this.reportResultsBox.Location = new System.Drawing.Point(5, 27);
-            this.reportResultsBox.Name = "reportResultsBox";
-            this.reportResultsBox.Size = new System.Drawing.Size(237, 394);
-            this.reportResultsBox.TabIndex = 1;
+            this.groupBox7.Controls.Add(this.button3);
+            this.groupBox7.Controls.Add(this.button2);
+            this.groupBox7.Controls.Add(this.button1);
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Controls.Add(this.listBox1);
+            this.groupBox7.Location = new System.Drawing.Point(4, 11);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox7.Size = new System.Drawing.Size(703, 420);
+            this.groupBox7.TabIndex = 4;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Admin Page - Add, Delete, Update";
             // 
-            // reportButton
+            // listBox1
             // 
-            this.reportButton.Location = new System.Drawing.Point(3, 404);
-            this.reportButton.Margin = new System.Windows.Forms.Padding(2);
-            this.reportButton.Name = "reportButton";
-            this.reportButton.Size = new System.Drawing.Size(242, 27);
-            this.reportButton.TabIndex = 25;
-            this.reportButton.Text = "More Info";
-            this.reportButton.UseVisualStyleBackColor = true;
-            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(14, 86);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(246, 290);
+            this.listBox1.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(62, 31);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(152, 16);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Search A Movie Title";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(14, 50);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(246, 20);
+            this.textBox1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(14, 381);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "ADD";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(100, 381);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "DELETE";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(185, 381);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "UPDATE";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 473);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.Tab);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Movie Database";
-            this.tabControl1.ResumeLayout(false);
+            this.Tab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -607,13 +686,16 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl Tab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -656,6 +738,13 @@
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button reportButton;
         private System.Windows.Forms.ListBox reportResultsBox;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

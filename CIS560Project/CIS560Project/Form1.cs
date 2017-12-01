@@ -15,11 +15,14 @@ namespace CIS560Project
     {
 
         private MySqlConnection cnn;
+        
 
         public Form1()
         {
             InitializeComponent();
             connect(); //Used to Connect to DataBase
+
+            Tab.Selected += new TabControlEventHandler(Tab_Selected);
 
             //Sets all fields to false, until checked
             ActorNameTextBox.Enabled = false;
@@ -29,6 +32,19 @@ namespace CIS560Project
             ReleasedBox1.Enabled = false;
             ReleasedBox2.Enabled = false;
             RatingBox.Enabled = false;
+
+        }
+
+        private void Tab_Selected(object sender, TabControlEventArgs e)
+        {
+            if(e.TabPage.Name == tabPage3.Name)
+            {
+                
+            }
+            else
+            {
+
+            }
         }
 
         private void connect()
@@ -172,6 +188,7 @@ namespace CIS560Project
             }
         }
 
+        //this starts the lsit of queries
         private void searchCountryGenreRelease()
         {
             string CountryGenreRelease_search = "SELECT * FROM movies m, countries c, genres g WHERE c.name ='" + CountryBox.SelectedItem.ToString()
@@ -531,6 +548,7 @@ namespace CIS560Project
             } while (rdr.NextResult());
             rdr.Close();
         }
+        //end list of queries
 
         private void ActorNameCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -643,7 +661,7 @@ namespace CIS560Project
             //Checks if one of the items is selected.
             if (Results.SelectedItem != null)
             {
-                tabControl1.SelectTab(1);
+                Tab.SelectTab(1);
                 string[] MovieInfo = new string[10];
                 string[] results = new string[10];
 
