@@ -708,8 +708,7 @@ namespace CIS560Project
             //Checks if one of the items is selected.
             if(Results.SelectedItem != null)
             {
-                if (!Results.SelectedItem.ToString().Substring(0, 8).Equals("        ") &&
-                    Results.SelectedItem.ToString().Split(':').Length != 2)
+                if (Results.SelectedItem.ToString()[0] != ' ')
                 {
                     string[] MovieInfo = new string[10];
                     string[] results = new string[10];
@@ -723,12 +722,20 @@ namespace CIS560Project
                         for (int i = 0; i < rdr.FieldCount; i++)
                         {
                             rdr.Read();
-                            MovieInfo[i] = rdr[i].ToString();
+                            if (i == 1)
+                            {
+                                System.DateTime dt = (System.DateTime)rdr.GetValue(i);
+                                MovieInfo[i] = dt.Month + "/" + dt.Day + "/" + dt.Year;
+                            }
+                            else
+                            {
+                                MovieInfo[i] = rdr[i].ToString();
+                            }
                         }
                     } while (rdr.NextResult());
                     rdr.Close();
                     Results.Items.Add(MovieInfo[2]);
-                    Results.Items.Add("    Release Date: " + MovieInfo[1].Substring(0, 8));
+                    Results.Items.Add("    Release Date: " + MovieInfo[1]);
                     Results.Items.Add("    Length (min): " + MovieInfo[3]);
 
                     string GenreString = "SELECT * FROM genres WHERE genreID = '" + MovieInfo[4] + "'";
@@ -778,23 +785,57 @@ namespace CIS560Project
                         }
                     } while (rdr.NextResult());
                     rdr.Close();
-                }
-                else if (!Results.SelectedItem.ToString().Substring(0, 8).Equals("        ") &&
+                }  else if (!Results.SelectedItem.ToString().Substring(0, 8).Equals("        ") &&
                     Results.SelectedItem.ToString().Split(':').Length == 2)
                 {
                     string[] itemSplit = Results.SelectedItem.ToString().Split(':');
-                    if 
-                    string MoviesByGenreString = "SELECT * FROM movies JOIN genres ON movies.gID=genres.genreID " +
-                        "genre = '" + Results.SelectedItem.ToString() + "'";
-                    MySqlCommand cmd = new MySqlCommand(MoviesByGenreString, cnn);
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-                    do
+                    itemSplit[1] = itemSplit[1].Substring(1);
+                    Results.Items.Clear();
+
+                    if (itemSplit[0] == "    Genre")
                     {
-                        while (rdr.Read())
+                        string MoviesByGenreString = "SELECT * FROM movies JOIN genres ON movies.gID=genres.genreID " +
+                            "WHERE genre = '" + itemSplit[1] + "' ORDER BY movies.name";
+                        MySqlCommand cmd = new MySqlCommand(MoviesByGenreString, cnn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        do
                         {
-                            Results.Items.Add(rdr[2].ToString());
-                        }
-                    } while (rdr.NextResult());
+                            while (rdr.Read())
+                            {
+                                Results.Items.Add(rdr[2].ToString());
+                            }
+                        } while (rdr.NextResult());
+                        rdr.Close();
+                    } else if (itemSplit[0] == "    Country")
+                    {
+                        string MoviesByCountryString = "SELECT * FROM movies JOIN countries ON movies.cID = countries.countryID " +
+                            "WHERE countries.name = '" + itemSplit[1] + "' ORDER BY movies.name";
+                        MySqlCommand cmd = new MySqlCommand(MoviesByCountryString, cnn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        do
+                        {
+                            while (rdr.Read())
+                            {
+                                Results.Items.Add(rdr[2].ToString());
+                            }
+                        } while (rdr.NextResult());
+                        rdr.Close();
+                    } else if (itemSplit[0] == "    Director")
+                    {
+                        string MoviesByDirectorString = "SELECT * FROM movies JOIN directorMovies ON movies.movieID=directorMovies.movID " +
+                            "JOIN directorIDs on directorMovies.directorMovieID=directorIDs.directorID WHERE directorIDs.name = '" + itemSplit[1] +
+                            "' ORDER BY movies.name";
+                        MySqlCommand cmd = new MySqlCommand(MoviesByDirectorString, cnn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        do
+                        {
+                            while (rdr.Read())
+                            {
+                                Results.Items.Add(rdr[2].ToString());
+                            }
+                        } while (rdr.NextResult());
+                        rdr.Close();
+                    }
                 }
             }
         }
