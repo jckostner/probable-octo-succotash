@@ -39,12 +39,45 @@ namespace CIS560Project
         {
             if(e.TabPage.Name == tabPage3.Name)
             {
-                
+                DisableAdmin();
+                ClearAdmin();
             }
             else
             {
 
             }
+        }
+
+        private void ClearAdmin()
+        {
+            AdminActor.Text = "";
+            AdminCountry.Text = "";
+            AdminGenre.SelectedItem = "Please Select";
+            AdminDirector.Text = "";
+            AdminLength.Text = "";
+            AdminRating.SelectedItem = "Please Select";
+            AdminSound.Text = "";
+            AdminTracks.Text = "";
+            AdminReview.SelectedItem = "Please Select";
+            AdminRelease.Text = "";
+            AdminMovie.Text = "";
+        }
+
+        private void DisableAdmin()
+        {
+            AdminActor.Enabled = false;
+            AdminCountry.Enabled = false;
+            AdminGenre.Enabled = false;
+            AdminDirector.Enabled = false;
+            AdminLength.Enabled = false;
+            AdminRating.Enabled = false;
+            AdminSound.Enabled = false;
+            AdminTracks.Enabled = false;
+            AdminReview.Enabled = false;
+            AdminRelease.Enabled = false;
+            AdminAdd.Enabled = false;
+            AdminDelete.Enabled = false;
+            AdminMovie.Enabled = false;
         }
 
         private void connect()
@@ -730,6 +763,11 @@ namespace CIS560Project
                 rdr.Close();
 
             }
+        }
+
+        private void AdminClear_Click(object sender, EventArgs e)
+        {
+            ClearAdmin();
         }
     }
 }

@@ -72,12 +72,36 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.AdminDisplay = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AdminSearch = new System.Windows.Forms.TextBox();
+            this.AdminAdd = new System.Windows.Forms.Button();
+            this.AdminDelete = new System.Windows.Forms.Button();
+            this.AdminUpdate = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.AdminMovie = new System.Windows.Forms.TextBox();
+            this.AdminActor = new System.Windows.Forms.TextBox();
+            this.AdminDirector = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.AdminGenre = new System.Windows.Forms.ComboBox();
+            this.AdminCountry = new System.Windows.Forms.ComboBox();
+            this.label = new System.Windows.Forms.Label();
+            this.AdminSound = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.AdminRating = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.AdminTracks = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.AdminReview = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.AdminRelease = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.AdminClear = new System.Windows.Forms.Button();
+            this.AdminLength = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.Tab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -597,12 +621,36 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.button3);
-            this.groupBox7.Controls.Add(this.button2);
-            this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.AdminLength);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.AdminClear);
+            this.groupBox7.Controls.Add(this.label20);
+            this.groupBox7.Controls.Add(this.AdminRelease);
+            this.groupBox7.Controls.Add(this.label19);
+            this.groupBox7.Controls.Add(this.AdminReview);
+            this.groupBox7.Controls.Add(this.label18);
+            this.groupBox7.Controls.Add(this.AdminTracks);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Controls.Add(this.AdminRating);
+            this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Controls.Add(this.AdminSound);
+            this.groupBox7.Controls.Add(this.label14);
+            this.groupBox7.Controls.Add(this.AdminCountry);
+            this.groupBox7.Controls.Add(this.label);
+            this.groupBox7.Controls.Add(this.AdminGenre);
+            this.groupBox7.Controls.Add(this.label13);
+            this.groupBox7.Controls.Add(this.AdminDirector);
+            this.groupBox7.Controls.Add(this.label12);
+            this.groupBox7.Controls.Add(this.AdminActor);
+            this.groupBox7.Controls.Add(this.AdminMovie);
+            this.groupBox7.Controls.Add(this.label17);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Controls.Add(this.AdminUpdate);
+            this.groupBox7.Controls.Add(this.AdminDelete);
+            this.groupBox7.Controls.Add(this.AdminAdd);
+            this.groupBox7.Controls.Add(this.AdminSearch);
             this.groupBox7.Controls.Add(this.label10);
-            this.groupBox7.Controls.Add(this.listBox1);
+            this.groupBox7.Controls.Add(this.AdminDisplay);
             this.groupBox7.Location = new System.Drawing.Point(4, 11);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
@@ -612,13 +660,13 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Admin Page - Add, Delete, Update";
             // 
-            // listBox1
+            // AdminDisplay
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(14, 86);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(246, 290);
-            this.listBox1.TabIndex = 0;
+            this.AdminDisplay.FormattingEnabled = true;
+            this.AdminDisplay.Location = new System.Drawing.Point(14, 86);
+            this.AdminDisplay.Name = "AdminDisplay";
+            this.AdminDisplay.Size = new System.Drawing.Size(246, 290);
+            this.AdminDisplay.TabIndex = 0;
             // 
             // label10
             // 
@@ -630,39 +678,238 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Search A Movie Title";
             // 
-            // textBox1
+            // AdminSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(14, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(246, 20);
-            this.textBox1.TabIndex = 3;
+            this.AdminSearch.Location = new System.Drawing.Point(14, 50);
+            this.AdminSearch.Name = "AdminSearch";
+            this.AdminSearch.Size = new System.Drawing.Size(246, 20);
+            this.AdminSearch.TabIndex = 3;
             // 
-            // button1
+            // AdminAdd
             // 
-            this.button1.Location = new System.Drawing.Point(14, 381);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "ADD";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AdminAdd.Location = new System.Drawing.Point(14, 381);
+            this.AdminAdd.Name = "AdminAdd";
+            this.AdminAdd.Size = new System.Drawing.Size(75, 23);
+            this.AdminAdd.TabIndex = 4;
+            this.AdminAdd.Text = "ADD";
+            this.AdminAdd.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // AdminDelete
             // 
-            this.button2.Location = new System.Drawing.Point(100, 381);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "DELETE";
-            this.button2.UseVisualStyleBackColor = true;
+            this.AdminDelete.Location = new System.Drawing.Point(100, 381);
+            this.AdminDelete.Name = "AdminDelete";
+            this.AdminDelete.Size = new System.Drawing.Size(75, 23);
+            this.AdminDelete.TabIndex = 5;
+            this.AdminDelete.Text = "DELETE";
+            this.AdminDelete.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // AdminUpdate
             // 
-            this.button3.Location = new System.Drawing.Point(185, 381);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "UPDATE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.AdminUpdate.Location = new System.Drawing.Point(185, 381);
+            this.AdminUpdate.Name = "AdminUpdate";
+            this.AdminUpdate.Size = new System.Drawing.Size(75, 23);
+            this.AdminUpdate.TabIndex = 6;
+            this.AdminUpdate.Text = "UPDATE";
+            this.AdminUpdate.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(294, 31);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Movie Title:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(294, 68);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(75, 13);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Actor/Actress:";
+            // 
+            // AdminMovie
+            // 
+            this.AdminMovie.Location = new System.Drawing.Point(375, 27);
+            this.AdminMovie.Name = "AdminMovie";
+            this.AdminMovie.Size = new System.Drawing.Size(169, 20);
+            this.AdminMovie.TabIndex = 18;
+            // 
+            // AdminActor
+            // 
+            this.AdminActor.Location = new System.Drawing.Point(375, 65);
+            this.AdminActor.Name = "AdminActor";
+            this.AdminActor.Size = new System.Drawing.Size(169, 20);
+            this.AdminActor.TabIndex = 19;
+            // 
+            // AdminDirector
+            // 
+            this.AdminDirector.Location = new System.Drawing.Point(375, 101);
+            this.AdminDirector.Name = "AdminDirector";
+            this.AdminDirector.Size = new System.Drawing.Size(169, 20);
+            this.AdminDirector.TabIndex = 21;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(294, 104);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Director:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(294, 143);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(39, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Genre:";
+            // 
+            // AdminGenre
+            // 
+            this.AdminGenre.FormattingEnabled = true;
+            this.AdminGenre.Location = new System.Drawing.Point(375, 140);
+            this.AdminGenre.Name = "AdminGenre";
+            this.AdminGenre.Size = new System.Drawing.Size(169, 21);
+            this.AdminGenre.TabIndex = 23;
+            // 
+            // AdminCountry
+            // 
+            this.AdminCountry.FormattingEnabled = true;
+            this.AdminCountry.Location = new System.Drawing.Point(375, 181);
+            this.AdminCountry.Name = "AdminCountry";
+            this.AdminCountry.Size = new System.Drawing.Size(169, 21);
+            this.AdminCountry.TabIndex = 25;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(294, 184);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(46, 13);
+            this.label.TabIndex = 24;
+            this.label.Text = "Country:";
+            // 
+            // AdminSound
+            // 
+            this.AdminSound.Location = new System.Drawing.Point(375, 260);
+            this.AdminSound.Name = "AdminSound";
+            this.AdminSound.Size = new System.Drawing.Size(169, 20);
+            this.AdminSound.TabIndex = 27;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(294, 263);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Sound Track:";
+            // 
+            // AdminRating
+            // 
+            this.AdminRating.FormattingEnabled = true;
+            this.AdminRating.Location = new System.Drawing.Point(375, 219);
+            this.AdminRating.Name = "AdminRating";
+            this.AdminRating.Size = new System.Drawing.Size(169, 21);
+            this.AdminRating.TabIndex = 29;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(294, 222);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 13);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "Rating:";
+            // 
+            // AdminTracks
+            // 
+            this.AdminTracks.Location = new System.Drawing.Point(395, 286);
+            this.AdminTracks.Name = "AdminTracks";
+            this.AdminTracks.Size = new System.Drawing.Size(81, 20);
+            this.AdminTracks.TabIndex = 31;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(294, 289);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 13);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "Number of Tracks:";
+            // 
+            // AdminReview
+            // 
+            this.AdminReview.FormattingEnabled = true;
+            this.AdminReview.Location = new System.Drawing.Point(375, 322);
+            this.AdminReview.Name = "AdminReview";
+            this.AdminReview.Size = new System.Drawing.Size(169, 21);
+            this.AdminReview.TabIndex = 33;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(294, 325);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(73, 13);
+            this.label18.TabIndex = 32;
+            this.label18.Text = "Reviewed By:";
+            // 
+            // AdminRelease
+            // 
+            this.AdminRelease.Location = new System.Drawing.Point(375, 356);
+            this.AdminRelease.Name = "AdminRelease";
+            this.AdminRelease.Size = new System.Drawing.Size(169, 20);
+            this.AdminRelease.TabIndex = 35;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(294, 359);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 13);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Release Date:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(550, 359);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(81, 13);
+            this.label20.TabIndex = 36;
+            this.label20.Text = "(YYYY-MM-DD)";
+            // 
+            // AdminClear
+            // 
+            this.AdminClear.Location = new System.Drawing.Point(623, 396);
+            this.AdminClear.Name = "AdminClear";
+            this.AdminClear.Size = new System.Drawing.Size(75, 23);
+            this.AdminClear.TabIndex = 37;
+            this.AdminClear.Text = "CLEAR";
+            this.AdminClear.UseVisualStyleBackColor = true;
+            this.AdminClear.Click += new System.EventHandler(this.AdminClear_Click);
+            // 
+            // AdminLength
+            // 
+            this.AdminLength.Location = new System.Drawing.Point(375, 384);
+            this.AdminLength.Name = "AdminLength";
+            this.AdminLength.Size = new System.Drawing.Size(169, 20);
+            this.AdminLength.TabIndex = 39;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(294, 387);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(75, 13);
+            this.label21.TabIndex = 38;
+            this.label21.Text = "Movie Length:";
             // 
             // Form1
             // 
@@ -739,12 +986,36 @@
         private System.Windows.Forms.Button reportButton;
         private System.Windows.Forms.ListBox reportResultsBox;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button AdminUpdate;
+        private System.Windows.Forms.Button AdminDelete;
+        private System.Windows.Forms.Button AdminAdd;
+        private System.Windows.Forms.TextBox AdminSearch;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox AdminDisplay;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox AdminRelease;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox AdminReview;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox AdminTracks;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox AdminRating;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox AdminSound;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox AdminCountry;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.ComboBox AdminGenre;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox AdminDirector;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox AdminActor;
+        private System.Windows.Forms.TextBox AdminMovie;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button AdminClear;
+        private System.Windows.Forms.TextBox AdminLength;
+        private System.Windows.Forms.Label label21;
     }
 }
 
