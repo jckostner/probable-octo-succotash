@@ -1,5 +1,5 @@
-INSERT INTO directorIDs (directorID,name) VALUES (1,"Nelle Sykes"),(2,"Tate Gaines"),(3,"Ezra Copeland"),(4,"Teegan Garza"),(5,"Abel Golden"),(6,"Illana Soto"),(7,"Gisela Perry"),(8,"Stacy Frank"),(9,"Chloe Marshall"),(10,"Rooney Dillard"),
-(11,"Genevieve Fisher"),(12,"Sydney Tanner"),(13,"Whitney Patterson"),(14,"Brandon Hogan"),(15,"Larissa Shepard"),(16,"Karyn Deleon"),(17,"Shannon Macdonald"),(18,"Zenaida Moss"),(19,"Duncan Schroeder"),(20,"Naida Richmond"),
+INSERT INTO directorIDs (directorID,name) VALUES (1,"Rob Schmidt"),(2,"Rob Clements"),(3,"Victor Salva"),(4,"Frank Darabont"),(5,"Peter Segal"),(6,"Peter Berg"),(7,"Andy Muschietti"),(8,"Chris Lofing"),(9,"Michael Bay"),(10,"Steven Spielberg"),
+(11,"James Marsh"),(12,"James Cameron"),(13,"Henry Hathaway"),(14,"Pierre Morel"),(15,"Byron Howard"),(16,"Randal Kleiser"),(17,"Martin Scorsese"),(18,"Daniel Myrick"),(19,"Peter Faiman"),(20,"Naida Richmond"),
 (21,"Jermaine Brennan"),(22,"Madonna Mathis"),(23,"Hyatt Rosa"),(24,"Eric Holt"),(25,"Hayes Barr"),(26,"Rhona Nielsen"),(27,"Athena Brooks"),(28,"Alden Strickland"),(29,"Ora Glenn"),(30,"Alexandra Bennett"),
 (31,"Grace Fisher"),(32,"Patricia Pitts"),(33,"Griffin Rivera"),(34,"Yardley Barnes"),(35,"Hadley Williamson"),(36,"Guinevere Alexander"),(37,"Blossom Salas"),(38,"Dane Riley"),(39,"Lysandra Terry"),(40,"Joy Sampson"),
 (41,"Keiko Lambert"),(42,"Joelle Wong"),(43,"Debra Burton"),(44,"Nissim Ramsey"),(45,"MacKenzie Gilmore"),(46,"Mannix Mooney"),(47,"Ian Cantu"),(48,"Dolan Oliver"),(49,"Martin Morris"),(50,"Barry Grant"),
