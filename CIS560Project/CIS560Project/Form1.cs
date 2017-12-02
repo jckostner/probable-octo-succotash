@@ -15,7 +15,6 @@ namespace CIS560Project
     {
 
         private MySqlConnection cnn;
-        
 
         public Form1()
         {
@@ -23,7 +22,8 @@ namespace CIS560Project
             connect(); //Used to Connect to DataBase
 
             Tab.Selected += new TabControlEventHandler(Tab_Selected);
-
+            AdminDisplay.SelectedIndexChanged += new EventHandler(AdminDisplay_Click);
+            
             //Sets all fields to false, until checked
             ActorNameTextBox.Enabled = false;
             DirectorNameTextBox.Enabled = false;
@@ -33,6 +33,14 @@ namespace CIS560Project
             ReleasedBox2.Enabled = false;
             RatingBox.Enabled = false;
 
+        }
+
+        private void AdminDisplay_Click(object sender, EventArgs e)
+        {
+            if(AdminDisplay.SelectedItem != null)
+            {
+                AdminSelect.Enabled = true;
+            }
         }
 
         private void Tab_Selected(object sender, TabControlEventArgs e)
@@ -51,33 +59,39 @@ namespace CIS560Project
         private void ClearAdmin()
         {
             AdminActor.Text = "";
-            AdminCountry.Text = "";
-            AdminGenre.SelectedItem = "Please Select";
+            AdminCountry.Text = "Please Select";
+            AdminGenre.Text = "Please Select";
             AdminDirector.Text = "";
             AdminLength.Text = "";
-            AdminRating.SelectedItem = "Please Select";
+            AdminRating.Text = "Please Select";
             AdminSound.Text = "";
             AdminTracks.Text = "";
-            AdminReview.SelectedItem = "Please Select";
+            AdminReview.Text = "Please Select";
             AdminRelease.Text = "";
             AdminMovie.Text = "";
+            AdminSearch.Text = "";
+            AdminDisplay.Items.Clear();
+            AdminDisplay.Enabled = false;
+            AdminSelect.Enabled = false;
+            AdminProducer.Text = "";
+            DisableAdmin();
         }
 
         private void DisableAdmin()
         {
-            AdminActor.Enabled = false;
-            AdminCountry.Enabled = false;
-            AdminGenre.Enabled = false;
-            AdminDirector.Enabled = false;
-            AdminLength.Enabled = false;
-            AdminRating.Enabled = false;
-            AdminSound.Enabled = false;
-            AdminTracks.Enabled = false;
-            AdminReview.Enabled = false;
-            AdminRelease.Enabled = false;
-            AdminAdd.Enabled = false;
-            AdminDelete.Enabled = false;
-            AdminMovie.Enabled = false;
+            
+            AdminDelete.Enabled = false;     
+            AdminUpdate.Enabled = false;
+            AdminSelect.Enabled = false;
+            AdminDisplay.Enabled = false;
+        }
+
+        private void EnableAdmin()
+        {
+            AdminDelete.Enabled = true;
+            AdminUpdate.Enabled = true;
+            AdminSelect.Enabled = true;
+            AdminDisplay.Enabled = true;
         }
 
         private void connect()
@@ -769,5 +783,148 @@ namespace CIS560Project
         {
             ClearAdmin();
         }
+
+        private void AdminSearchButton_Click(object sender, EventArgs e)
+        {
+            if(AdminSearch.Text == "")
+            {
+                MessageBox.Show("Please Enter a Movie Title First");
+            }
+            else
+            {
+                AdminDisplay.Items.Clear(); //clears out all previous movie titles
+
+                //populate movie titles
+                string MovieInfoString = "SELECT * FROM movies WHERE name LIKE '%" + AdminSearch.Text.ToString() + "%'";
+                MySqlCommand cmd = new MySqlCommand(MovieInfoString, cnn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                do
+                {
+                    while (rdr.Read())
+                    {
+                        AdminDisplay.Items.Add(rdr[2].ToString());
+                    }
+                } while (rdr.NextResult());
+                rdr.Close();
+                AdminDisplay.Enabled = true;
+                
+            }
+        }
+
+        private void AdminSelect_Click(object sender, EventArgs e)
+        {
+            //options to delete and update
+            AdminDelete.Enabled = true;
+            AdminUpdate.Enabled = true;
+
+            string[] MovieInfo = new string[10];
+            string[] results = new string[10];
+
+            string MovieInfoString = "SELECT * FROM movies WHERE name = '" + AdminDisplay.SelectedItem + "'";
+            MySqlCommand cmd = new MySqlCommand(MovieInfoString, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            do
+            {
+                for (int i = 0; i < rdr.FieldCount; i++)
+                {
+                    rdr.Read();
+                    MovieInfo[i] = rdr[i].ToString();
+                }
+            } while (rdr.NextResult());
+            rdr.Close();
+
+            AdminMovie.Text = MovieInfo[2]; //sets movie title
+            AdminRelease.Text = MovieInfo[1].Substring(0, 8); //sets release date
+            AdminLength.Text = MovieInfo[3]; //sets movie length
+
+            //Genre Search
+            string GenreString = "SELECT * FROM genres WHERE genreID = '" + MovieInfo[4] + "'";
+            cmd = new MySqlCommand(GenreString, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[1].ToString();
+            rdr.Close();
+            AdminGenre.SelectedItem = results[0]; //sets movie genre
+
+            //Company Search
+            string ProducerString = "SELECT * FROM companies WHERE companyID = '" + MovieInfo[5] + "'";
+            cmd = new MySqlCommand(ProducerString, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[1].ToString();
+            rdr.Close();
+            AdminProducer.Text = results[0]; //sets movie producer
+
+            //Country Search
+            string CountryString = "SELECT * FROM countries WHERE countryID = '" + MovieInfo[6] + "'";
+            cmd = new MySqlCommand(CountryString, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[1].ToString();
+            rdr.Close();
+            AdminCountry.SelectedItem = results[0]; //sets movie country
+
+            //Director Search
+            string DirectorString = "SELECT * FROM directorMovies JOIN directorIDs ON " +
+                    "directorMovies.directorMovieID = directorIDs.directorID  WHERE movID = '" +
+                    MovieInfo[0] + "'";
+            cmd = new MySqlCommand(DirectorString, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[3].ToString();
+            rdr.Close();
+            AdminDirector.Text = results[0];
+
+            //Actor Search
+            string ActorsString = "SELECT * FROM actorMovies JOIN actorIDs ON actorMovies.actorMovieID" +
+                    "=actorIDs.actorID WHERE movID = '" + MovieInfo[0] + "'";
+            cmd = new MySqlCommand(ActorsString, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[3].ToString();
+            rdr.Close();
+            AdminActor.Text = results[0];
+
+            //Rating Search
+            string RatingString = "SELECT * FROM review JOIN movies on review.movID = movies.movieID WHERE movID = '" + MovieInfo[0] + "'";
+            cmd = new MySqlCommand(RatingString, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[2].ToString();
+            rdr.Close();
+            AdminRating.SelectedIndex = Convert.ToInt32(results[0]) - 1;
+            AdminRating.SelectedItem = results[0];
+
+            //Sound Track Search
+            string SoundTrackSearch = "SELECT * FROM soundTracks JOIN movies on soundTracks.movID = movies.movieID WHERE movID = '" + MovieInfo[0] + "'";
+            cmd = new MySqlCommand(SoundTrackSearch, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[1].ToString();
+            rdr.Close();
+            AdminSound.Text = results[0];
+
+            //Sound Track # search
+            string SoundTrackNumSearch = "SELECT * FROM soundTracks JOIN movies on soundTracks.movID = movies.movieID WHERE movID = '" + MovieInfo[0] + "'";
+            cmd = new MySqlCommand(SoundTrackNumSearch, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[3].ToString();
+            rdr.Close();
+            AdminTracks.Text = results[0];
+
+
+            //Reviewed by Search
+            string ReviewBySearch = "SELECT * FROM reviewers JOIN review ON reviewers.reviewerID = review.rID WHERE movID = '" + MovieInfo[0] + "'";
+            cmd = new MySqlCommand(ReviewBySearch, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            results[0] = rdr[1].ToString();
+            rdr.Close();
+            AdminReview.SelectedItem = results[0];
+        }
+
+        
     }
 }
