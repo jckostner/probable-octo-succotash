@@ -948,6 +948,7 @@
             this.AdminUpdate.TabIndex = 6;
             this.AdminUpdate.Text = "UPDATE";
             this.AdminUpdate.UseVisualStyleBackColor = true;
+            this.AdminUpdate.Click += new System.EventHandler(this.AdminUpdate_Click);
             // 
             // AdminDelete
             // 
@@ -957,6 +958,7 @@
             this.AdminDelete.TabIndex = 5;
             this.AdminDelete.Text = "DELETE";
             this.AdminDelete.UseVisualStyleBackColor = true;
+            this.AdminDelete.Click += new System.EventHandler(this.AdminDelete_Click);
             // 
             // AdminAdd
             // 
@@ -966,6 +968,7 @@
             this.AdminAdd.TabIndex = 4;
             this.AdminAdd.Text = "ADD";
             this.AdminAdd.UseVisualStyleBackColor = true;
+            this.AdminAdd.Click += new System.EventHandler(this.AdminAdd_Click);
             // 
             // AdminSearch
             // 

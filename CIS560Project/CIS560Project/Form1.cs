@@ -16,6 +16,7 @@ namespace CIS560Project
 
         private MySqlConnection cnn;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -925,6 +926,87 @@ namespace CIS560Project
             AdminReview.SelectedItem = results[0];
         }
 
-        
+        private void AdminDelete_Click(object sender, EventArgs e)
+        {
+            //get movieID
+            string getMovieID = "SELECT movieID FROM movies WHERE name ='" + AdminDisplay.SelectedItem + "'";
+            MySqlCommand cmd = new MySqlCommand(getMovieID, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            int movieID = Convert.ToInt32(rdr[0]);
+            rdr.Close();
+
+
+            //Deletes the movie
+            string DeleteMovie = "DELETE FROM movies WHERE name ='" + AdminDisplay.SelectedItem + "'";
+            cmd = new MySqlCommand(DeleteMovie, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
+            //deltes from actorMovies
+            string DeleteActorMovie = "DELETE FROM actorMovies WHERE movID = '" + movieID.ToString() + "'";
+            cmd = new MySqlCommand(DeleteActorMovie, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
+            //delete rating
+            string DeleteRating = "DELETE FROM review WHERE movID = '" + movieID.ToString() + "'";
+            cmd = new MySqlCommand(DeleteRating, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
+            //delete sound tracks
+            string DeleteST = "DELETE FROM soundTracks WHERE movID = '" + movieID.ToString() + "'";
+            cmd = new MySqlCommand(DeleteST, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
+            //delete directorMovie
+            string DeleteDirectorMovie = "DELETE FROM directorMovies WHERE movID = '" + movieID.ToString() + "'";
+            cmd = new MySqlCommand(DeleteDirectorMovie, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+        } //works
+
+        private void AdminUpdate_Click(object sender, EventArgs e)
+        {
+            //get movieID
+            string getMovieID = "SELECT movieID FROM movies WHERE name ='" + AdminDisplay.SelectedItem.ToString() + "'";
+            MySqlCommand cmd = new MySqlCommand(getMovieID, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            int movieID = Convert.ToInt32(rdr[0]);
+            rdr.Close();
+
+            string MovieNameUpdate = "UPDATE movies SET releaseDate = '" + AdminRelease.Text + "', name = '" + AdminMovie.Text + "', movielength = '" 
+                                      + AdminLength.Text + "', gID ='" + (AdminGenre.SelectedIndex + 1) + "' WHERE movieID = '" + movieID + "'";
+            cmd = new MySqlCommand(MovieNameUpdate, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            rdr.Close();
+
+            //string ActorUpdate = "UPDATE actorMovies SET movID = '" + movieID + "' WHERE actorMovieID = actorIDs.actorID AND actorIDs.name = '" + AdminActor.Text + "'";
+
+            MessageBox.Show("Update Successfull");
+            ClearAdmin();
+        } //not done
+
+        private void AdminAdd_Click(object sender, EventArgs e)
+        {
+            string MaxMID = "SELECT MAX(movieID) FROM movies";
+            MySqlCommand cmd = new MySqlCommand(MaxMID, cnn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            int max = Convert.ToInt32(rdr[0]);
+            rdr.Close();
+
+            string AddMovies = "INSERT INTO movies (movieID, releaseDate, name, movieLength, gID, cID, producedIn) VALUES ('"
+                + (max + 1) + "', '" + AdminRelease.Text + "', '" + AdminMovie.Text + "', '" + AdminLength.Text + "', '" + (AdminGenre.SelectedIndex + 1) + "', '"
+                + 1 + "', '" + (AdminCountry.SelectedIndex + 1) + "')";
+            MessageBox.Show(AddMovies);
+            cmd = new MySqlCommand(AddMovies, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+        } //kinda works
     }
 }
