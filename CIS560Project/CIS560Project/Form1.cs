@@ -738,39 +738,57 @@ namespace CIS560Project
                     Results.Items.Add("    Release Date: " + MovieInfo[1]);
                     Results.Items.Add("    Length (min): " + MovieInfo[3]);
 
+                    string ReviewString = "SELECT * FROM review WHERE movID = '" + MovieInfo[0] + "'";
+                    cmd = new MySqlCommand(ReviewString, cnn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        results[0] = rdr[2].ToString();
+                    }
+                    rdr.Close();
+                    Results.Items.Add("    Rating: " + results[0]);
+
                     string GenreString = "SELECT * FROM genres WHERE genreID = '" + MovieInfo[4] + "'";
                     cmd = new MySqlCommand(GenreString, cnn);
                     rdr = cmd.ExecuteReader();
-                    rdr.Read();
-                    results[0] = rdr[1].ToString();
+                    while (rdr.Read())
+                    {
+                        results[0] = rdr[1].ToString();
+                    }
                     rdr.Close();
                     Results.Items.Add("    Genre: " + results[0]);
 
                     string ProducerString = "SELECT * FROM companies WHERE companyID = '" + MovieInfo[5] + "'";
                     cmd = new MySqlCommand(ProducerString, cnn);
                     rdr = cmd.ExecuteReader();
-                    rdr.Read();
-                    results[0] = rdr[1].ToString();
+                    while (rdr.Read())
+                    {
+                        results[1] = rdr[1].ToString();
+                    }
                     rdr.Close();
-                    Results.Items.Add("    Producer: " + results[0]);
+                    Results.Items.Add("    Producer: " + results[1]);
 
                     string CountryString = "SELECT * FROM countries WHERE countryID = '" + MovieInfo[6] + "'";
                     cmd = new MySqlCommand(CountryString, cnn);
                     rdr = cmd.ExecuteReader();
-                    rdr.Read();
-                    results[0] = rdr[1].ToString();
+                    while (rdr.Read())
+                    {
+                        results[2] = rdr[1].ToString();
+                    }
                     rdr.Close();
-                    Results.Items.Add("    Country: " + results[0]);
+                    Results.Items.Add("    Country: " + results[2]);
 
                     string DirectorString = "SELECT * FROM directorMovies JOIN directorIDs ON " +
                         "directorMovies.directorMovieID = directorIDs.directorID  WHERE movID = '" +
                         MovieInfo[0] + "'";
                     cmd = new MySqlCommand(DirectorString, cnn);
                     rdr = cmd.ExecuteReader();
-                    rdr.Read();
-                    results[0] = rdr[3].ToString();
+                    while (rdr.Read())
+                    {
+                        results[3] = rdr[3].ToString();
+                    }
                     rdr.Close();
-                    Results.Items.Add("    Director: " + results[0]);
+                    Results.Items.Add("    Director: " + results[3]);
 
                     string ActorsString = "SELECT * FROM actorMovies JOIN actorIDs ON actorMovies.actorMovieID" +
                         "=actorIDs.actorID WHERE movID = '" + MovieInfo[0] + "'";
@@ -785,8 +803,9 @@ namespace CIS560Project
                         }
                     } while (rdr.NextResult());
                     rdr.Close();
-                }  else if (!Results.SelectedItem.ToString().Substring(0, 8).Equals("        ") &&
-                    Results.SelectedItem.ToString().Split(':').Length == 2)
+                }
+                else if (!Results.SelectedItem.ToString().Substring(0, 8).Equals("        ") &&
+                 Results.SelectedItem.ToString().Split(':').Length == 2)
                 {
                     string[] itemSplit = Results.SelectedItem.ToString().Split(':');
                     itemSplit[1] = itemSplit[1].Substring(1);
@@ -806,7 +825,8 @@ namespace CIS560Project
                             }
                         } while (rdr.NextResult());
                         rdr.Close();
-                    } else if (itemSplit[0] == "    Country")
+                    }
+                    else if (itemSplit[0] == "    Country")
                     {
                         string MoviesByCountryString = "SELECT * FROM movies JOIN countries ON movies.cID = countries.countryID " +
                             "WHERE countries.name = '" + itemSplit[1] + "' ORDER BY movies.name";
@@ -820,7 +840,8 @@ namespace CIS560Project
                             }
                         } while (rdr.NextResult());
                         rdr.Close();
-                    } else if (itemSplit[0] == "    Director")
+                    }
+                    else if (itemSplit[0] == "    Director")
                     {
                         string MoviesByDirectorString = "SELECT * FROM movies JOIN directorMovies ON movies.movieID=directorMovies.movID " +
                             "JOIN directorIDs on directorMovies.directorMovieID=directorIDs.directorID WHERE directorIDs.name = '" + itemSplit[1] +
@@ -836,6 +857,26 @@ namespace CIS560Project
                         } while (rdr.NextResult());
                         rdr.Close();
                     }
+                    else if (itemSplit[0] == "    Actor")
+                    {
+
+                    }
+                }
+                else
+                {
+                    string MoviesByActorsString = "SELECT * FROM movies JOIN actorMovies ON movies.movieID=actorMovies.movID " +
+                        "JOIN actorIDs on actorMovies.actorMovieID=actorIDs.actorID WHERE actorIDs.name = '" + Results.SelectedItem.ToString().Substring(8)
+                        + "' ORDER BY movies.name";
+                    MySqlCommand cmd = new MySqlCommand(MoviesByActorsString, cnn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    do
+                    {
+                        while (rdr.Read())
+                        {
+                            Results.Items.Add(rdr[2].ToString());
+                        }
+                    } while (rdr.NextResult());
+                    rdr.Close();
                 }
             }
         }
