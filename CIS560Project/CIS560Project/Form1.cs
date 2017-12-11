@@ -705,79 +705,205 @@ namespace CIS560Project
 
         private void reportButton_Click(object sender, EventArgs e)
         {
-            reportResultsBox.Items.Clear();
             //Checks if one of the items is selected.
-            if (Results.SelectedItem != null)
+            if(Results.SelectedItem != null)
             {
-                Tab.SelectTab(1);
-                string[] MovieInfo = new string[10];
-                string[] results = new string[10];
-
-                string MovieInfoString = "SELECT * FROM movies WHERE name = '" + Results.SelectedItem + "'";
-                MySqlCommand cmd = new MySqlCommand(MovieInfoString, cnn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                do
+                if (Results.SelectedItem.ToString()[0] != ' ')
                 {
-                    for(int i = 0; i < rdr.FieldCount; i++)
+                    string[] MovieInfo = new string[10];
+                    string[] results = new string[10];
+
+                    string MovieInfoString = "SELECT * FROM movies WHERE name = '" + Results.SelectedItem + "'";
+                    Results.Items.Clear();
+                    MySqlCommand cmd = new MySqlCommand(MovieInfoString, cnn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    do
                     {
-                        rdr.Read();
-                        MovieInfo[i] = rdr[i].ToString();
-                    }
-                } while (rdr.NextResult());
-                rdr.Close();
-                reportResultsBox.Items.Add(MovieInfo[2]);
-                reportResultsBox.Items.Add("    Release Date: " + MovieInfo[1].Substring(0, 8));
-                reportResultsBox.Items.Add("    Length (min): " + MovieInfo[3]);
+                        for (int i = 0; i < rdr.FieldCount; i++)
+                        {
+                            rdr.Read();
+                            if (i == 1)
+                            {
+                                System.DateTime dt = (System.DateTime)rdr.GetValue(i);
+                                MovieInfo[i] = dt.Month + "/" + dt.Day + "/" + dt.Year;
+                            }
+                            else
+                            {
+                                MovieInfo[i] = rdr[i].ToString();
+                            }
+                        }
+                    } while (rdr.NextResult());
+                    rdr.Close();
+                    Results.Items.Add(MovieInfo[2]);
+                    Results.Items.Add("    Release Date: " + MovieInfo[1]);
+                    Results.Items.Add("    Length (min): " + MovieInfo[3]);
 
-                string GenreString = "SELECT * FROM genres WHERE genreID = '" + MovieInfo[4] + "'";
-                cmd = new MySqlCommand(GenreString, cnn);
-                rdr = cmd.ExecuteReader();
-                rdr.Read();
-                results[0] = rdr[1].ToString();
-                rdr.Close();
-                reportResultsBox.Items.Add("    Genre: " + results[0]);
-
-                string ProducerString = "SELECT * FROM companies WHERE companyID = '" + MovieInfo[5] + "'";
-                cmd = new MySqlCommand(ProducerString, cnn);
-                rdr = cmd.ExecuteReader();
-                rdr.Read();
-                results[0] = rdr[1].ToString();
-                rdr.Close();
-                reportResultsBox.Items.Add("    Producer: " + results[0]);
-
-                string CountryString = "SELECT * FROM countries WHERE countryID = '" + MovieInfo[6] + "'";
-                cmd = new MySqlCommand(CountryString, cnn);
-                rdr = cmd.ExecuteReader();
-                rdr.Read();
-                results[0] = rdr[1].ToString();
-                rdr.Close();
-                reportResultsBox.Items.Add("    Country: " + results[0]);
-
-                string DirectorString = "SELECT * FROM directorMovies JOIN directorIDs ON " +
-                    "directorMovies.directorMovieID = directorIDs.directorID  WHERE movID = '" + 
-                    MovieInfo[0] + "'";
-                cmd = new MySqlCommand(DirectorString, cnn);
-                rdr = cmd.ExecuteReader();
-                rdr.Read();
-                results[0] = rdr[3].ToString();
-                rdr.Close();
-                reportResultsBox.Items.Add("    Director: " + results[0]);
-
-                string ActorsString = "SELECT * FROM actorMovies JOIN actorIDs ON actorMovies.actorMovieID" +
-                    "=actorIDs.actorID WHERE movID = '" + MovieInfo[0] + "'";
-                cmd = new MySqlCommand(ActorsString, cnn);
-                rdr = cmd.ExecuteReader();
-                reportResultsBox.Items.Add("    Actors: ");
-                do
-                {
+                    string ReviewString = "SELECT * FROM review WHERE movID = '" + MovieInfo[0] + "'";
+                    cmd = new MySqlCommand(ReviewString, cnn);
+                    rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
-                        reportResultsBox.Items.Add("        " + rdr[3].ToString());
+                        results[0] = rdr[2].ToString();
                     }
-                } while (rdr.NextResult());
-                rdr.Close();
+                    rdr.Close();
+                    Results.Items.Add("    Rating: " + results[0]);
 
+                    string GenreString = "SELECT * FROM genres WHERE genreID = '" + MovieInfo[4] + "'";
+                    cmd = new MySqlCommand(GenreString, cnn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        results[0] = rdr[1].ToString();
+                    }
+                    rdr.Close();
+                    Results.Items.Add("    Genre: " + results[0]);
+
+                    string ProducerString = "SELECT * FROM companies WHERE companyID = '" + MovieInfo[5] + "'";
+                    cmd = new MySqlCommand(ProducerString, cnn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        results[1] = rdr[1].ToString();
+                    }
+                    rdr.Close();
+                    Results.Items.Add("    Producer: " + results[1]);
+
+                    string CountryString = "SELECT * FROM countries WHERE countryID = '" + MovieInfo[6] + "'";
+                    cmd = new MySqlCommand(CountryString, cnn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        results[2] = rdr[1].ToString();
+                    }
+                    rdr.Close();
+                    Results.Items.Add("    Country: " + results[2]);
+
+                    string DirectorString = "SELECT * FROM directorMovies JOIN directorIDs ON " +
+                        "directorMovies.directorMovieID = directorIDs.directorID  WHERE movID = '" +
+                        MovieInfo[0] + "'";
+                    cmd = new MySqlCommand(DirectorString, cnn);
+                    rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        results[3] = rdr[3].ToString();
+                    }
+                    rdr.Close();
+                    Results.Items.Add("    Director: " + results[3]);
+
+                    string ActorsString = "SELECT * FROM actorMovies JOIN actorIDs ON actorMovies.actorMovieID" +
+                        "=actorIDs.actorID WHERE movID = '" + MovieInfo[0] + "'";
+                    cmd = new MySqlCommand(ActorsString, cnn);
+                    rdr = cmd.ExecuteReader();
+                    Results.Items.Add("    Actors: ");
+                    do
+                    {
+                        while (rdr.Read())
+                        {
+                            Results.Items.Add("        " + rdr[3].ToString());
+                        }
+                    } while (rdr.NextResult());
+                    rdr.Close();
+                }
+                else if (!Results.SelectedItem.ToString().Substring(0, 8).Equals("        ") &&
+                 Results.SelectedItem.ToString().Split(':').Length == 2)
+                {
+                    string[] itemSplit = Results.SelectedItem.ToString().Split(':');
+                    itemSplit[1] = itemSplit[1].Substring(1);
+                    Results.Items.Clear();
+
+                    if (itemSplit[0] == "    Genre")
+                    {
+                        string MoviesByGenreString = "SELECT * FROM movies JOIN genres ON movies.gID=genres.genreID " +
+                            "WHERE genre = '" + itemSplit[1] + "' ORDER BY movies.name";
+                        MySqlCommand cmd = new MySqlCommand(MoviesByGenreString, cnn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        do
+                        {
+                            while (rdr.Read())
+                            {
+                                Results.Items.Add(rdr[2].ToString());
+                            }
+                        } while (rdr.NextResult());
+                        rdr.Close();
+                    }
+                    else if (itemSplit[0] == "    Country")
+                    {
+                        string MoviesByCountryString = "SELECT * FROM movies JOIN countries ON movies.cID = countries.countryID " +
+                            "WHERE countries.name = '" + itemSplit[1] + "' ORDER BY movies.name";
+                        MySqlCommand cmd = new MySqlCommand(MoviesByCountryString, cnn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        do
+                        {
+                            while (rdr.Read())
+                            {
+                                Results.Items.Add(rdr[2].ToString());
+                            }
+                        } while (rdr.NextResult());
+                        rdr.Close();
+                    }
+                    else if (itemSplit[0] == "    Director")
+                    {
+                        string MoviesByDirectorString = "SELECT * FROM movies JOIN directorMovies ON movies.movieID=directorMovies.movID " +
+                            "JOIN directorIDs on directorMovies.directorMovieID=directorIDs.directorID WHERE directorIDs.name = '" + itemSplit[1] +
+                            "' ORDER BY movies.name";
+                        MySqlCommand cmd = new MySqlCommand(MoviesByDirectorString, cnn);
+                        MySqlDataReader rdr = cmd.ExecuteReader();
+                        do
+                        {
+                            while (rdr.Read())
+                            {
+                                Results.Items.Add(rdr[2].ToString());
+                            }
+                        } while (rdr.NextResult());
+                        rdr.Close();
+                    }
+                    else if (itemSplit[0] == "    Actor")
+                    {
+
+                    }
+                }
+                else
+                {
+                    string MoviesByActorsString = "SELECT * FROM movies JOIN actorMovies ON movies.movieID=actorMovies.movID " +
+                        "JOIN actorIDs on actorMovies.actorMovieID=actorIDs.actorID WHERE actorIDs.name = '" + Results.SelectedItem.ToString().Substring(8)
+                        + "' ORDER BY movies.name";
+                    MySqlCommand cmd = new MySqlCommand(MoviesByActorsString, cnn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    do
+                    {
+                        while (rdr.Read())
+                        {
+                            Results.Items.Add(rdr[2].ToString());
+                        }
+                    } while (rdr.NextResult());
+                    rdr.Close();
+                }
             }
+        }
+
+        private void groupBox7_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox8_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton02_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void AdminClear_Click(object sender, EventArgs e)
