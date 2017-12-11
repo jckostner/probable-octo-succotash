@@ -903,16 +903,7 @@ namespace CIS560Project
 
         private void radioButton02_CheckedChanged(object sender, EventArgs e)
         {
-            if(radioButton02.Checked == true)
-            {
-                radioButton15.Enabled = false;
-                radioButton16.Enabled = false;
-            }
-            else
-            {
-                radioButton15.Enabled = true;
-                radioButton16.Enabled = true;
-            }
+
         }
 
         private void AdminClear_Click(object sender, EventArgs e)

@@ -67,7 +67,6 @@
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.reportResultsBox = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -131,114 +130,8 @@
             this.Tab.Size = new System.Drawing.Size(719, 461);
             this.Tab.TabIndex = 0;
             // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.radioButton16);
-            this.groupBox9.Controls.Add(this.radioButton12);
-            this.groupBox9.Controls.Add(this.radioButton15);
-            this.groupBox9.Controls.Add(this.radioButton11);
-            this.groupBox9.Controls.Add(this.radioButton14);
-            this.groupBox9.Controls.Add(this.radioButton13);
-            this.groupBox9.Location = new System.Drawing.Point(232, -1);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(228, 439);
-            this.groupBox9.TabIndex = 10;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Choose Type";
-            this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(4, 67);
-            this.radioButton13.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(62, 17);
-            this.radioButton13.TabIndex = 2;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "Director";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(4, 89);
-            this.radioButton14.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(61, 17);
-            this.radioButton14.TabIndex = 4;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Review";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(4, 22);
-            this.radioButton11.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(54, 17);
-            this.radioButton11.TabIndex = 0;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "Movie";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(4, 111);
-            this.radioButton15.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(94, 17);
-            this.radioButton15.TabIndex = 5;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "Actor to Movie";
-            this.radioButton15.UseVisualStyleBackColor = true;
-            this.radioButton15.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(4, 45);
-            this.radioButton12.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(50, 17);
-            this.radioButton12.TabIndex = 1;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Actor";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // radioButton16
-            // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Location = new System.Drawing.Point(4, 134);
-            this.radioButton16.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(106, 17);
-            this.radioButton16.TabIndex = 6;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "Director to Movie";
-            this.radioButton16.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Location = new System.Drawing.Point(464, -1);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(245, 439);
-            this.groupBox8.TabIndex = 11;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Report Results";
-            this.groupBox8.Enter += new System.EventHandler(this.groupBox8_Enter);
-            // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.radioButton03);
-            this.groupBox7.Controls.Add(this.radioButton02);
-            this.groupBox7.Controls.Add(this.radioButton01);
             this.groupBox7.Location = new System.Drawing.Point(4, -1);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
@@ -248,43 +141,6 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Choose Task";
             this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
-            // 
-            // radioButton01
-            // 
-            this.radioButton01.AutoSize = true;
-            this.radioButton01.Location = new System.Drawing.Point(4, 22);
-            this.radioButton01.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton01.Name = "radioButton01";
-            this.radioButton01.Size = new System.Drawing.Size(44, 17);
-            this.radioButton01.TabIndex = 0;
-            this.radioButton01.TabStop = true;
-            this.radioButton01.Text = "Add";
-            this.radioButton01.UseVisualStyleBackColor = true;
-            // 
-            // radioButton02
-            // 
-            this.radioButton02.AutoSize = true;
-            this.radioButton02.Location = new System.Drawing.Point(4, 45);
-            this.radioButton02.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton02.Name = "radioButton02";
-            this.radioButton02.Size = new System.Drawing.Size(43, 17);
-            this.radioButton02.TabIndex = 1;
-            this.radioButton02.TabStop = true;
-            this.radioButton02.Text = "Edit";
-            this.radioButton02.UseVisualStyleBackColor = true;
-            this.radioButton02.CheckedChanged += new System.EventHandler(this.radioButton02_CheckedChanged);
-            // 
-            // radioButton03
-            // 
-            this.radioButton03.AutoSize = true;
-            this.radioButton03.Location = new System.Drawing.Point(4, 67);
-            this.radioButton03.Margin = new System.Windows.Forms.Padding(2);
-            this.radioButton03.Name = "radioButton03";
-            this.radioButton03.Size = new System.Drawing.Size(56, 17);
-            this.radioButton03.TabIndex = 2;
-            this.radioButton03.TabStop = true;
-            this.radioButton03.Text = "Delete";
-            this.radioButton03.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -653,17 +509,6 @@
             this.reportButton.UseVisualStyleBackColor = true;
             this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(10, 1);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(719, 461);
-            this.tabControl1.TabIndex = 0;
-            // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
@@ -699,7 +544,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.reportResultsBox);
             this.groupBox5.Location = new System.Drawing.Point(616, 0);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
@@ -708,16 +552,6 @@
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Report Results";
-            // 
-            // reportResultsBox
-            // 
-            this.reportResultsBox.FormattingEnabled = true;
-            this.reportResultsBox.ItemHeight = 16;
-            this.reportResultsBox.Location = new System.Drawing.Point(7, 33);
-            this.reportResultsBox.Margin = new System.Windows.Forms.Padding(4);
-            this.reportResultsBox.Name = "reportResultsBox";
-            this.reportResultsBox.Size = new System.Drawing.Size(315, 484);
-            this.reportResultsBox.TabIndex = 1;
             // 
             // groupBox6
             // 
@@ -1197,49 +1031,9 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.RadioButton radioButton03;
-        private System.Windows.Forms.RadioButton radioButton02;
-        private System.Windows.Forms.RadioButton radioButton01;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.RadioButton radioButton16;
-        private System.Windows.Forms.RadioButton radioButton12;
-        private System.Windows.Forms.RadioButton radioButton15;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton14;
-        private System.Windows.Forms.RadioButton radioButton13;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button reportButton;
         private System.Windows.Forms.ListBox Results;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox MovieTitleTextBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox RatingBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox ReleasedBox2;
-        private System.Windows.Forms.TextBox ReleasedBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox GenreBox;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox CountryBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox DirectorNameTextBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ActorNameTextBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox RatingCheckBox;
-        private System.Windows.Forms.CheckBox ReleaseCheckBox;
-        private System.Windows.Forms.CheckBox CountryCheckBox;
-        private System.Windows.Forms.CheckBox GenreCheckBox;
-        private System.Windows.Forms.CheckBox DirectCheckBox;
-        private System.Windows.Forms.CheckBox ActorNameCheckBox;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button AdminUpdate;
         private System.Windows.Forms.Button AdminDelete;
         private System.Windows.Forms.Button AdminAdd;
