@@ -928,7 +928,11 @@ namespace CIS560Project
 
                 do
                 {
-                    while (rdr.Read())
+                    string[] itemSplit = Results.SelectedItem.ToString().Split(':');
+                    itemSplit[1] = itemSplit[1].Substring(1);
+                    Results.Items.Clear();
+
+                    if (itemSplit[0] == "    Genre")
                     {
                         AdminDisplay.Items.Add(rdr[2].ToString());
                     }
