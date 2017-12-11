@@ -1104,35 +1104,163 @@ namespace CIS560Project
             int movieID = Convert.ToInt32(rdr[0]);
             rdr.Close();
 
+            //updates the movie
             string MovieNameUpdate = "UPDATE movies SET releaseDate = '" + AdminRelease.Text + "', name = '" + AdminMovie.Text + "', movielength = '" 
-                                      + AdminLength.Text + "', gID ='" + (AdminGenre.SelectedIndex + 1) + "' WHERE movieID = '" + movieID + "'";
+                                      + AdminLength.Text + "', gID ='" + (AdminGenre.SelectedIndex + 1).ToString() + "', producedIn ='"+ (AdminCountry.SelectedIndex+1).ToString() + "' WHERE movieID = '" + movieID + "'";
             cmd = new MySqlCommand(MovieNameUpdate, cnn);
             rdr = cmd.ExecuteReader();
             rdr.Read();
             rdr.Close();
 
-            //string ActorUpdate = "UPDATE actorMovies SET movID = '" + movieID + "' WHERE actorMovieID = actorIDs.actorID AND actorIDs.name = '" + AdminActor.Text + "'";
+            //get actor ID
+            string ActorIDGet = "SELECT actorMovieID FROM actorMovies WHERE movID =" + movieID;
+            int actorID = 0;
+            cmd = new MySqlCommand(ActorIDGet, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            actorID = Convert.ToInt32(rdr[0]);
+            rdr.Close();
+
+            //update actor id
+            string ActorUpdate = "UPDATE actorIDs SET name = '" + AdminActor.Text + "' WHERE actorID =" + actorID;
+            cmd = new MySqlCommand(ActorUpdate, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
+            //get director id
+            string DirectorIDGet = "SELECT directorMovieID FROM directorMovies WHERE movID =" + movieID;
+            int dirID = 0;
+            cmd = new MySqlCommand(DirectorIDGet, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Read();
+            dirID = Convert.ToInt32(rdr[0]);
+            rdr.Close();
+
+            //update director id
+            string DirectorUpdate = "UPDATE directorIDs SET name = '" + AdminDirector.Text + "' WHERE directorID =" + movieID; 
+            cmd = new MySqlCommand(DirectorUpdate, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
+            //update review
+            string ReviewUpdate = "UPDATE review SET rID = '" + (AdminReview.SelectedIndex + 1) + "', rating = '" + AdminRating.SelectedItem.ToString() + "' WHERE movID =" + movieID;
+            cmd = new MySqlCommand(ReviewUpdate, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
+            //update sound track
+            string SoundUpdate = "UPDATE soundTracks SET title = '" + AdminSound.Text + "', numTracks = '" + AdminTracks + "' WHERE movID = " + movieID;
+            cmd = new MySqlCommand(SoundUpdate, cnn);
+            rdr = cmd.ExecuteReader();
+            rdr.Close();
+
 
             MessageBox.Show("Update Successfull");
             ClearAdmin();
-        } //not done
+        } //done
 
         private void AdminAdd_Click(object sender, EventArgs e)
         {
-            string MaxMID = "SELECT MAX(movieID) FROM movies";
-            MySqlCommand cmd = new MySqlCommand(MaxMID, cnn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            rdr.Read();
-            int max = Convert.ToInt32(rdr[0]);
-            rdr.Close();
+            if (isEmpty() == true)
+            {
+                //get max movie id
+                string MaxMID = "SELECT MAX(movieID) FROM movies";
+                MySqlCommand cmd = new MySqlCommand(MaxMID, cnn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+                int max = Convert.ToInt32(rdr[0]) + 1;
+                rdr.Close();
 
-            string AddMovies = "INSERT INTO movies (movieID, releaseDate, name, movieLength, gID, cID, producedIn) VALUES ('"
-                + (max + 1) + "', '" + AdminRelease.Text + "', '" + AdminMovie.Text + "', '" + AdminLength.Text + "', '" + (AdminGenre.SelectedIndex + 1) + "', '"
-                + 1 + "', '" + (AdminCountry.SelectedIndex + 1) + "')";
-            MessageBox.Show(AddMovies);
-            cmd = new MySqlCommand(AddMovies, cnn);
-            rdr = cmd.ExecuteReader();
-            rdr.Close();
-        } //kinda works
+                string AddMovies = "INSERT INTO movies (movieID, releaseDate, name, movielength, gID, cID, producedIn) VALUES ('"
+                    + max + "', '" + AdminRelease.Text + "', '" + AdminMovie.Text + "', '" + AdminLength.Text + "', '" + (AdminGenre.SelectedIndex + 1) + "', '"
+                    + 1 + "', '" + (AdminCountry.SelectedIndex + 1) + "')";
+                cmd = new MySqlCommand(AddMovies, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                //get max actor id
+                int maxID = 0;
+                string MaxActorID = "SELECT Max(actorID) FROM actorIDs";
+                cmd = new MySqlCommand(MaxActorID, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
+                maxID = Convert.ToInt32(rdr[0]) + 1;
+                rdr.Close();
+
+                //Adds new actor
+                string AddActorID = "INSERT INTO actorIDs (actorID, name) VALUES ('" + maxID + "', '" + AdminActor.Text + "')";
+                cmd = new MySqlCommand(AddActorID, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                //adds new actor movie
+                string AddActorMovie = "INSERT INTO actorMovies(actorMovieID, movID) VALUES('" + maxID + "', '" + max + "')";
+                cmd = new MySqlCommand(AddActorMovie, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                //get max director ID
+                int maxDID = 0;
+                string MaxDirID = "SELECT Max(directorID) FROM directorIDs";
+                cmd = new MySqlCommand(MaxDirID, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
+                maxDID = Convert.ToInt32(rdr[0]) + 1;
+                rdr.Close();
+
+
+                //adds new director
+                string AddDirector = "INSERT INTO directorIDs(directorID, name) VALUES('" + maxDID + "', '" + AdminDirector.Text + "')";
+                cmd = new MySqlCommand(AddDirector, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                //adds new director movie
+                string AddDirectorMovie = "INSERT INTO directorMovies(directorMovieID, movID) VALUES('" + maxDID + "', '" + max + "')";
+                cmd = new MySqlCommand(AddDirectorMovie, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                //get max review ID
+                string getMaxreview = "SELECT Max(rID) FROM review";
+                int maxRID = 0;
+                cmd = new MySqlCommand(getMaxreview, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
+                maxRID = Convert.ToInt32(rdr[0]) + 1;
+                rdr.Close();
+
+                //adds review
+                string AddReview = "INSERT INTO review(rID, movID, rating, reviewDate) VALUES('" + maxRID + "', '" + max + "', '" + AdminRating.SelectedItem + "', 'NULL'";
+                cmd = new MySqlCommand(AddReview, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                //adds sound track
+                string AddTrack = "INSERT INTO soundTracks(movID, title, releaseDate, numTracks) VALUES('" + max + "', '" + AdminSound.Text + "', 'NULL', '" + AdminTracks.Text + "')";
+                cmd = new MySqlCommand(AddTrack, cnn);
+                rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                MessageBox.Show("Movie Added!");
+            }
+            else
+            {
+                MessageBox.Show("All fields must have a value");
+            }
+        } //mostly works
+
+        private bool isEmpty()
+        {
+            if(AdminMovie.Text != "" || AdminDirector.Text != "" || AdminActor.Text != "" || AdminLength.Text != "" || AdminLength.Text != "" || AdminSound.Text != "" )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
+        }
     }
 }

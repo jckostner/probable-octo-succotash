@@ -923,12 +923,7 @@
             // AdminDisplay
             // 
             this.AdminDisplay.FormattingEnabled = true;
-            this.AdminDisplay.ItemHeight = 16;
-            this.AdminDisplay.Items.AddRange(new object[] {
-            "Ryan",
-            "Marc"});
-            this.AdminDisplay.Location = new System.Drawing.Point(19, 138);
-            this.AdminDisplay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdminDisplay.Location = new System.Drawing.Point(14, 112);
             this.AdminDisplay.Name = "AdminDisplay";
             this.AdminDisplay.Size = new System.Drawing.Size(327, 324);
             this.AdminDisplay.TabIndex = 0;
