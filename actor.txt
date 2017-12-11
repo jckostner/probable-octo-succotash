@@ -1,6 +1,6 @@
-INSERT INTO ActorIDs(id,name) VALUES (1,"Desmond Harrington"),(2,"Dwayne Johnson"),(3,"Ray Wise"),(4,"Morgan Freeman"),(5,"Adam Sandler"),(6,"Billy Bob Thornton"),(7,"Jaeden Lieberher"),(8,"Cassidy Gifford"),
+INSERT INTO actorIDs(ActorID,name) VALUES (1,"Desmond Harrington"),(2,"Dwayne Johnson"),(3,"Ray Wise"),(4,"Morgan Freeman"),(5,"Adam Sandler"),(6,"Billy Bob Thornton"),(7,"Jaeden Lieberher"),(8,"Cassidy Gifford"),
 (9,"Shia LaBeouf"),(10,"Tom Hanks"),(11,"Philippe Petit"),(12,"Leonardo DiCaprio"),(13,"Sam Worthington"),(14,"John Wayne"),(15,"Liam Neeson"),(16,"Ginnifer Goodwin"),(17,"John Travolta"),(18,"Heather Donahue"),
-(19,"Paul Hogan"),(20,"Orlando Bloom),(21,"Sierra Hicks"),(22,"Fatima Gentry"),(23,"Elijah Mccall"),(24,"Kyra Ellison"),(25,"Andrew Lang"),(26,"Clinton Delaney"),(27,"Drake Franks"),(28,"Tamara Carver"),(29,"Casey Mcknight"),
+(19,"Paul Hogan"),(20,"Orlando Bloom"),(21,"Sierra Hicks"),(22,"Fatima Gentry"),(23,"Elijah Mccall"),(24,"Kyra Ellison"),(25,"Andrew Lang"),(26,"Clinton Delaney"),(27,"Drake Franks"),(28,"Tamara Carver"),(29,"Casey Mcknight"),
 (30,"Denton Waters"),(31,"Gannon Norton"),(32,"Colton Head"),(33,"Kirestin Morin"),(34,"Dora Mcdonald"),(35,"Evangeline Mills"),(36,"Bert Knapp"),(37,"Basia Alford"),(38,"Chancellor Maynard"),(39,"Armand Santana"),
 (40,"Vance Vasquez"),(41,"Kenneth Camacho"),(42,"Moses Knowles"),(43,"Nolan Dean"),(44,"Alexandra Valentine"),(45,"Basia Maddox"),(46,"Nomlanga Ellison"),(47,"Marsden Orr"),(48,"Orlando Hines"),(49,"Lev Frank"),
 (50,"Christopher Deleon"),(51,"Mia Gray"),(52,"Kevin Gilliam"),(53,"Jenette Potts"),(54,"Tarik Sheppard"),(55,"Octavius Clay"),(56,"Odessa Dawson"),(57,"Serina Hurley"),(58,"Barbara Juarez"),(59,"Pearl Hopper"),
