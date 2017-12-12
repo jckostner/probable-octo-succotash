@@ -60,14 +60,14 @@ namespace CIS560Project
         private void ClearAdmin()
         {
             AdminActor.Text = "";
-            AdminCountry.Text = "Please Select";
-            AdminGenre.Text = "Please Select";
+            AdminCountry.SelectedItem = null;
+            AdminGenre.SelectedItem = null;
             AdminDirector.Text = "";
             AdminLength.Text = "";
-            AdminRating.Text = "Please Select";
+            AdminRating.SelectedItem = null; ;
             AdminSound.Text = "";
             AdminTracks.Text = "";
-            AdminReview.Text = "Please Select";
+            AdminReview.SelectedItem = null;
             AdminRelease.Text = "";
             AdminMovie.Text = "";
             AdminSearch.Text = "";
@@ -75,7 +75,6 @@ namespace CIS560Project
             AdminDisplay.Enabled = false;
             AdminSelect.Enabled = false;
             AdminProducer.Text = "";
-            DisableAdmin();
         }
 
         private void DisableAdmin()
@@ -881,31 +880,6 @@ namespace CIS560Project
             }
         }
 
-        private void groupBox7_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox8_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox9_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton02_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void AdminClear_Click(object sender, EventArgs e)
         {
             ClearAdmin();
@@ -1149,14 +1123,14 @@ namespace CIS560Project
             rdr.Close();
 
             //update sound track
-            string SoundUpdate = "UPDATE soundTracks SET title = '" + AdminSound.Text + "', numTracks = '" + AdminTracks + "' WHERE movID = " + movieID;
+            string SoundUpdate = "UPDATE soundTracks SET title = '" + AdminSound.Text + "', numTracks = '" + AdminTracks.Text + "' WHERE movID = " + movieID;
             cmd = new MySqlCommand(SoundUpdate, cnn);
             rdr = cmd.ExecuteReader();
             rdr.Close();
 
-
             MessageBox.Show("Update Successfull");
             ClearAdmin();
+            
         } //done
 
         private void AdminAdd_Click(object sender, EventArgs e)
