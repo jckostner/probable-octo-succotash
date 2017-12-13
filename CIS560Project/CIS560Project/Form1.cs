@@ -930,13 +930,21 @@ namespace CIS560Project
                 for (int i = 0; i < rdr.FieldCount; i++)
                 {
                     rdr.Read();
-                    MovieInfo[i] = rdr[i].ToString();
+                    if (i == 1)
+                    {
+                        System.DateTime dt = (System.DateTime)rdr.GetValue(i);
+                        MovieInfo[i] = dt.Month + "/" + dt.Day + "/" + dt.Year;
+                    }
+                    else
+                    {
+                        MovieInfo[i] = rdr[i].ToString();
+                    }
                 }
             } while (rdr.NextResult());
             rdr.Close();
 
             AdminMovie.Text = MovieInfo[2]; //sets movie title
-            AdminRelease.Text = MovieInfo[1].Substring(0, 8); //sets release date
+            AdminRelease.Text = MovieInfo[1]; //sets release date
             AdminLength.Text = MovieInfo[3]; //sets movie length
 
             //Genre Search
