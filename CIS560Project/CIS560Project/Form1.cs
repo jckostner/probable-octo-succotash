@@ -866,6 +866,7 @@ namespace CIS560Project
                     string MoviesByActorsString = "SELECT * FROM movies JOIN actorMovies ON movies.movieID=actorMovies.movID " +
                         "JOIN actorIDs on actorMovies.actorMovieID=actorIDs.actorID WHERE actorIDs.name = '" + Results.SelectedItem.ToString().Substring(8)
                         + "' ORDER BY movies.name";
+                    Results.Items.Clear();
                     MySqlCommand cmd = new MySqlCommand(MoviesByActorsString, cnn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     do
@@ -1028,8 +1029,10 @@ namespace CIS560Project
             string ReviewBySearch = "SELECT * FROM reviewers JOIN review ON reviewers.reviewerID = review.rID WHERE movID = '" + MovieInfo[0] + "'";
             cmd = new MySqlCommand(ReviewBySearch, cnn);
             rdr = cmd.ExecuteReader();
-            rdr.Read();
-            results[0] = rdr[1].ToString();
+            while (rdr.Read())
+            {
+                results[0] = rdr[1].ToString();
+            }
             rdr.Close();
             AdminReview.SelectedItem = results[0];
         }
@@ -1040,8 +1043,11 @@ namespace CIS560Project
             string getMovieID = "SELECT movieID FROM movies WHERE name ='" + AdminDisplay.SelectedItem + "'";
             MySqlCommand cmd = new MySqlCommand(getMovieID, cnn);
             MySqlDataReader rdr = cmd.ExecuteReader();
-            rdr.Read();
-            int movieID = Convert.ToInt32(rdr[0]);
+            int movieID = -1;
+            while (rdr.Read())
+            {
+                movieID = Convert.ToInt32(rdr[0]);
+            }
             rdr.Close();
 
 
@@ -1213,7 +1219,7 @@ namespace CIS560Project
                 rdr.Close();
 
                 //adds review
-                string AddReview = "INSERT INTO review(rID, movID, rating, reviewDate) VALUES('" + maxRID + "', '" + max + "', '" + AdminRating.SelectedItem + "', 'NULL'";
+                string AddReview = "INSERT INTO review(rID, movID, rating, reviewDate) VALUES('" + (AdminReview.SelectedIndex + 1) + "', '" + max + "', '" + AdminRating.SelectedItem + "', 'NULL')";
                 cmd = new MySqlCommand(AddReview, cnn);
                 rdr = cmd.ExecuteReader();
                 rdr.Close();
